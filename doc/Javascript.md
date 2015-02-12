@@ -26,6 +26,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 ##### Framework
 
 #### Ressources
-##### Books 
+
+##### Livres
 * [Javascript Patterns](http://shop.oreilly.com/product/9780596806767.do)
 * [Eloquent Javascript](http://search.oreilly.com/?q=eloquent+javascript)
+#### Sites web
+* [Can I Use](http://caniuse.com/)
+* [developer.mozilla.org - Closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+* [developer.mozilla.org - Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
