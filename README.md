@@ -8,7 +8,7 @@ Presentation of web front-end development basis for beginners
 	1. IDE
 	* Browser dev Tools
 * [CSS](./doc/CSS.md)
-	a. Bonnes pratiques
+	1. Bonnes pratiques
 		* Nomenclature
 		* Architecture 
 	* CSS Tools and library
@@ -22,14 +22,14 @@ Presentation of web front-end development basis for beginners
 		* Media Queries
 		* Flex box
 	* Ressources
-* Concevoir pour des appareils variés
+* [Concevoir pour des appareils variés](./doc/multi-support.md)
 	1. Fixed design
 	* Fluid design
 	* Adaptative design
 	* Responsive design
 	* Choix et optimisation des assets
 	* Mobile first Design
-* Javascript
+* [Javascript](./doc/Javascript.md)
 	1. Code patterns
 		* Literal Object
 		* Prototype
@@ -50,7 +50,7 @@ Presentation of web front-end development basis for beginners
 		* Libraries
 		* Framework
 		* Ressources
-* Automatisation des opérations
+* [Automatisation des opérations](./doc/Automatisation.md)
 	1. Grunt
 	* Gulp
 	* Exemples (grunt)
@@ -58,39 +58,5 @@ Presentation of web front-end development basis for beginners
 
 
 
-### Javascript
-#### Code patterns
-#### Literal Object
-#### Prototype
-#### Functions
-##### Callback
-##### Memoization
-#### Bonnes pratiques
-##### Modulariser
-http://addyosmani.com/writing-modular-js/
-###### Closure
-###### CommonJS
-###### AMD pattern
-http://requirejs.org/docs/whyamd.html
 
-###### Distribuer les modules 
-##### Compression du code
-##### Quelques notions d’optimisation
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 
-##### Tests automatisés
-#### Javascript Tools
-##### Debug
-##### Libraries
-##### Framework
-##### Ressources
-###### Books 
-* [Javascript Patterns](http://shop.oreilly.com/product/9780596806767.do)
-* [Eloquent Javascript](http://search.oreilly.com/?q=eloquent+javascript)
-### Automatisation des opérations
-#### Grunt
-http://gruntjs.com/
-#### Gulp
-#### Exemples (grunt)
-#### [Yeoman](http://yeoman.io/)
-#### Ressources
