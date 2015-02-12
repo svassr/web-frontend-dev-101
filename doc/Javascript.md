@@ -26,6 +26,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 ##### Framework
 
 #### Ressources
-##### Books 
+##### Livres
 * [Javascript Patterns](http://shop.oreilly.com/product/9780596806767.do)
 * [Eloquent Javascript](http://search.oreilly.com/?q=eloquent+javascript)
+##### Sites web
+* http://www.html5rocks.com/en/
+##### Vidéos
+* https://github.com/bolshchikov/js-must-watch
+* [Dev on Stage - Youtube playlist](https://www.youtube.com/playlist?list=PL8l7YtFPKywaQ_VhZSeElM8D1JWpJKtKV)
+* [Lunch and learn - Youtube playlist](https://www.youtube.com/playlist?list=PL8l7YtFPKywYaDTg7yFDytHBX-BpH8cDM)
