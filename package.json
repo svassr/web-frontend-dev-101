@@ -1,0 +1,28 @@
+{
+  "name": "web-frontend-dev-101",
+  "version": "0.0.0",
+  "description": "Presentation of web front-end development basis for beginners",
+  "main": "index.html",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/svassr/web-frontend-dev-101.git"
+  },
+  "keywords": [
+    "presentation",
+    "101",
+    "frontend",
+    "webdev"
+  ],
+  "author": "Stephane Vasseur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svassr/web-frontend-dev-101/issues"
+  },
+  "homepage": "https://github.com/svassr/web-frontend-dev-101",
+  "dependencies": {
+    "bower": "^1.3.12"
+  }
+}
