@@ -18,18 +18,23 @@ http://requirejs.org/docs/whyamd.html
 ##### Compression du code
 ##### Quelques notions d’optimisation
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
+
 ##### Tests automatisés
 
 #### Javascript Tools
 ##### Debug
-##### Libraries
-##### Framework
+##### Libraries / Frameworks
+- https://github.com/components Liste les incontournables du deévelopeur frontend moderne
+- Angular.js
+
+
 
 #### Ressources
 
 ##### Livres
 * [Javascript Patterns](http://shop.oreilly.com/product/9780596806767.do)
 * [Eloquent Javascript](http://search.oreilly.com/?q=eloquent+javascript)
+
 #### Sites web
 * [Can I Use](http://caniuse.com/)
 * [developer.mozilla.org - Closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
