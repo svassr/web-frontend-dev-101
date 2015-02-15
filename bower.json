@@ -1,0 +1,11 @@
+{
+  "name": "web-frontend-dev-101",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "modernizr": "~2.8.2",
+    "reveal.js": "~3.0.0",
+    "classlist": "~2014.7.23",
+    "headjs": "~1.0.3"
+  }
+}
