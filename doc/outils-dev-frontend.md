@@ -6,3 +6,6 @@
 	* Browser dev Tools
 		![Browsers](../app/images/slides/chrome_firefox_opera_safari_ie-256.png)
 		Outils de développement intégrés aux navigateurs
+		- Inspecteur de DOM "Elements"
+		- Editeur de style "Styles"
+

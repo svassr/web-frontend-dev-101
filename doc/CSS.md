@@ -106,11 +106,12 @@ CSS:
 
 HTML: 
 ```
-<div class="media attribution">
-  <a href="http://twitter.com/stubbornella" class="media__img">
-    <img src="http://stubbornella.com/profile_image.jpg" alt="me" />
-  </a>
-  <div class="media__body">@Stubbornella 14 minutes ago</div>
+<div class="media">
+    <img src="logo.png" alt="Foo Corp logo" class="media__img--rev">
+    <div class="media__body">
+        <h3 class="alpha">Welcome to Foo Corp</h3>
+        <p class="lede">Foo Corp is the best, seriously!</p>
+    </div>
 </div>
 ```
 
