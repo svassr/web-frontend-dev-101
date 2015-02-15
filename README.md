@@ -4,7 +4,7 @@ Présentation des bases du dévelopement web front-end
 Presentation of web front-end development basis for beginners
 
 ## Sommaire
-1. Les outils du développeur frontend
+1. [Les outils du développeur frontend](./doc/outils-dev-fronend.md)
 	1. IDE
 	* Browser dev Tools
 * [CSS](./doc/CSS.md)
