@@ -30,7 +30,7 @@
     <![endif]-->
 
 
-<div class="slide reveal center">
+<div class="slide reveal center bob">
 <div class="slides">
 
 <!-- 1. Les outils du développeur frontend -->
@@ -61,21 +61,21 @@
 
 </section>
 
-<!-- 2. CSS -->
-<section data-background="#4d7e65" >
+<!-- 2. CSS data-background="#4d7e65"  -->
+<section> 
 <h2>2. CSS</h2>
+</section>
 
 <!-- 2.1 Bonnes pratiques -->
-
 <section>
 <h3>2.1. Bonnes pratiques</h3>
 </section>
 
-<section data-markdown >
-#### 2.1.1. Nomenclature
-1. Utiliser des classes uniquement pas des ID pour associer un style. Les id # sont uniques par conséquents ne sont pas réutilisables. Elles servent d'ancre dans la page ou au javascript.
+<section>
+<h3 class="fragment" data-fragment-id="0" >2.1.1. Nomenclature</h3>
+<p class="fragment" data-fragment-id="1">1. Utiliser des classes uniquement. Les id (#) sont uniques. Elles servent d'ancre dans la page ou au javascript.</p>
 
-2. Séparation du style et de la DOM (separation of concern). La classe ne nomme pas le style elle nomme l'objet au quel on va appliquer un style.
+<p class="fragment" data-fragment-id="2">2. Séparation du style et de la DOM (separation of concern). La classe ne nomme pas le style elle nomme l'objet au quel on va appliquer un style.</p>
 </section>
 
 <section>
@@ -100,8 +100,8 @@
 }</code></pre>
 </section>
 
-<section  data-markdown>
-###### CSS Orientté objet
+<section>
+<h4>CSS Orientté objet</h4>
 </section>
 
 <section data-markdown ><script type="text/template" >
@@ -156,7 +156,7 @@ http://bem.info/
 - Nomenclature orienté objet 
 - Tire profit des préprocesseurs CSS
 - Rend compte des héritages
-- Facilite la maintenance et l évolution du site
+- Facilite la maintenance et l évolution
 
 ```
 .block {}
@@ -165,7 +165,7 @@ http://bem.info/
 ```</script>
 </section>
 
-<section  class=" hljs" >
+<section>
 <h7>Exemple</h7><br/>
 
 <h8 class="left">CSS:</h8> 
@@ -185,18 +185,25 @@ http://bem.info/
 </section>
 
 <section>
-<b>CSS Lint</b> http://csslint.net
-Util pour vérifier en permance que les bonne pratiques sont bien suivies et que le code est lisible.
+<p><b>CSS Lint</b> http://csslint.net</p>
+<p>Outil servant à vérifier que les bonnes pratiques sont bien suivies.</p>
 </section>
 <!-- END 2.1.1. Nomenclature -->
 
+
+<!-- Architecture -->
 <section>
 <h4>2.1.2. Architecture </h4>
 <ul>
-    <li data-fragment-index="1">Rénitialiser les style des éléments HTML (css reset)</li>
-    <li data-fragment-index="2">Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dasn une même page</li>
-    <li data-fragment-index="3">Intégrer un guide stylistique (Style Guide)</li>
+    <li  class="fragment" data-fragment-index="1">Rénitialiser les style des éléments HTML (css reset)</li>
+    <li  class="fragment" data-fragment-index="2">Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dasn une même page</li>
+    <li  class="fragment" data-fragment-index="3">Intégrer un guide stylistique (Style Guide)</li>
 </ul>
+</section>
+
+
+<section>
+    <h5>Intégrer un guide stylistique</h5>
 </section>
 
 <section>
@@ -231,50 +238,302 @@ a.button.star.disabled{
 }</code></pre>
 </section>
 
+
+
 <section>
 <h4>2.1.2. Architecture </h4>
 <ul>
     <li>Rénitialiser les style des éléments HTML (css reset)</li>
     <li>Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dasn une même page</li>
     <li>Intégrer un guide stylistique (Style Guide)</li>
-    <li data-fragment-index="4"><i>Séparer les variables dans un ou plusieurs fichiers (ex: vars.scss, colors.scss, fonts.scss, breakpoints.scss)</li>
-    <li data-fragment-index="4">Une feuille de style par module</li>
-    <li data-fragment-index="5">Une feuille de style par page</li>
-    <li data-fragment-index="6">Espacements verticaux (vertical rythme) toujours exprimés en <b>em</b> ou <b>rem</b></li>
+    <li class="fragment" data-fragment-index="4">Séparer les variables dans un ou plusieurs fichiers (ex: vars.scss, colors.scss, fonts.scss, breakpoints.scss)</li>
+    <li class="fragment" data-fragment-index="5">Une feuille de style par module</li>
+    <li class="fragment" data-fragment-index="6">Une feuille de style par page</li>
+    <li class="fragment" data-fragment-index="7">Espacements verticaux (vertical rythme) toujours exprimés en <b>em</b> ou <b>rem</b></li>
 </ul>
 </section>
+<!-- CLOSE Architecture -->
+
 
 <!-- 2.2. CSS Tools and library -->
-<section  data-markdown>
-<h3>2.2. CSS Tools and library</h3>
+<section>
+<h3>2.2. CSS Tools and libraries</h3>
 </section>
+
+<section>
+<h4>2.2.1. Sass : Préprocesseur CSS</h4>
+<p>Syntactically Awesome Style Sheets</p>
+<a href="http://sass-lang.com/" >http://sass-lang.com/</a><br>
+<img alt="sass logo" src="./images/slides/logo-sass.svg" width="30%">
+</section>
+
+<section>
+<h6>Nesting / Imbrication</h6>
+<section>
+<p>Permet d'éviter les répétitions de selecteurs parent. Le CSS est plus simple.</p>
+
+
+scss:
+<pre><code>#main {
+  width: 97%;
+  p, div {
+    font-size: 2em;
+    a { font-weight: bold; }
+  }
+  pre { font-size: 3em; }
+}</code></pre>
+css :
+<pre><code>#main {
+  width: 97%; }
+  #main p, #main div {
+    font-size: 2em; }
+    #main p a, #main div a {
+      font-weight: bold; }
+  #main pre {
+    font-size: 3em; }</code></pre>
+</section>
+
+<section>
+Référence au parent :  " & "
+<pre><code class="hljs css">a {
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover { 
+    text-decoration: underline; 
+  }
+
+  body.firefox & { 
+    font-weight: normal; 
+  }
+}</code></pre></section>
+
+<section>
+Concaténation
+
+<pre><code class="hljs scss">#main {
+  color: black;
+  &-sidebar { border: 1px solid; }
+}
+</code></pre>
+is compiled to:
+<pre><code class="hljs css">
+#main {
+  color: black; }
+  #main-sidebar {
+    border: 1px solid;
+}</code></pre></section>
+
+</section>
+<!-- CLOSE Nesting section -->
+
+<section>
+<h6>@include, @mixin</h6>
+
+<section>
+<pre><code class="hljs scss">@mixin silly-links {
+  a {
+    color: blue;
+    background-color: red;
+  }
+}
+@include silly-links;
+</code></pre>
+</section>
+
+<section>
+<pre><code class="hljs scss">@mixin clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}</code></pre>
+</section>
+
+
+<section>
+<pre><code class="hljs scss">@mixin sexy-border($color, $width) {
+  border: {
+    color: $color;
+    width: $width;
+    style: dashed;
+  }
+}
+
+p { @include sexy-border(blue, 1in); }
+</code></pre>
+</section>
+
+<section>
+<pre><code class="hljs scss">@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}</code></pre>
+</section>
+
+</section>
+<!-- close mixin section -->
+
+
+<section><h6>@extend</h6>
+
+scss:
+<pre><code>.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}</code></pre>
+css :
+<pre><code>.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+.seriousError {
+  border-width: 3px;
+}</code></pre>
+</section>
+
+
+
+
+
+<section>
+<h6>Interpolation: #{}</h6>
+<section data-markdown>
+```
+$name: foo;
+$attr: border;
+p.#{$name} {
+  #{$attr}-color: blue;
+}
+```
+</section>
+<section data-markdown>
+```
+@mixin firefox-message($selector) {
+  body.firefox #{$selector}:before {
+    content: "Hi, Firefox users!";
+  }
+}
+
+@include firefox-message(".header");
+```
+</section>
+<section data-markdown>
+```
+p:before {
+  content: "I ate #{5 + 10} pies!";
+}
+```
+</section>
+<section data-markdown>
+```
+p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+```
+</section>
+
+
+
+<section data-markdown>###### @import
+```
+@import "foo.scss";
+@import "foo";
+``` 
+
+* Importe tous les deux un fichier scss. Note que l'extension est optionnelle.
+* "_" est implicitepour cette raison. On ne peut créer un partial et in non-partial dans le meme folder.
+
+Par contre les appels suivant créeer une règle css @import.
+```
+@import "foo.css";
+@import "foo" screen;
+@import "http://foo.com/bar";
+@import url(foo);
+```</section>
+
+</section>
+
+
+<section>
+<h5>2.2.3. Fameworks CSS</h5>
+<ul>
+<li><a href="http://compass-style.org/">Compass</a> +sprite generator, -lent</li>
+<li><a href="http://bourbon.io/">Bourbon.io</a> </li>
+<li><a href="http://terabytenz.github.io/inuit.css-kitchensink/">Inuit CSS</a></li>
+<li><a href="http://foundation.zurb.com/">Zurb Foundation</a></li>
+<li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+</ul>
+<br>
+<img alt="bourbon logo" src="./images/slides/bourbon-logo.png"  />
+<img alt="sass logo" src="./images/slides/inuit-css.png" height="100em" />
+<img alt="compass logo" src="./images/slides/compass.png" height="100em" />
+<br>
+<img alt="zurb" src="./images/slides/frameworks-zurb-foundation-180x180.png" height="100em" />
+<img alt="bootstrap logo" src="./images/slides/bootstrap2_logo.png" height="100em" />
+</section>
+
 
 <!-- 2.3. CSS avancés -->
-<section  data-markdown>
+<section>
 <h3>2.3. CSS avancés</h3>
 </section>
+<section><h5>Pseudo selecteurs</h5></section>
+<section><h5>Formes géométriques</h5></section>
+<section><h5>Animation</h5></section>
+<section><h5>Media Queries</h5></section>
+<section><h5>Flex-box</h5></section>
+<section><h5>transform</h5></section>
+
 
 <!-- 2.4. Ressources -->
-<section  data-markdown>
-<h3>2.4. Ressources</h3>
+<section data-markdown>
+#### 2.4. Ressources
+
+* [Can I Use](http://caniuse.com/)
+* [SMACSS](http://smacss.com)
+* [CSS-Tricks](css-tricks.com)
+Style-guide generator
+    * [Comparison article](http://welchcanavan.com/styleguide-roundup/)
+    * [style-guide generator list](http://vinspee.me/style-guide-guide/)
+    * https://github.com/davidhund/styleguide-generators
+* https://github.com/davidhund/styleguide-generators
+* http://thewebrocks.com/demos/3D-css-tester/
 </section>
 
-</section>
 <!-- END 2. CSS -->
 
 <!-- 3. Concevoir pour des appareils variés -->
-<section  data-markdown>
-<h2>Concevoir pour des appareils variés</h2>
+<section>
+<h2>3. Concevoir pour des appareils variés</h2>
 </section>
 
+
 <!-- 4. Javascript -->
-<section  data-markdown>
-<h2>Javascript</h2>
+<section>
+<h2>4. Javascript</h2>
 </section>
 
 <!-- 5. Automatisation des opérations -->
-<section  data-markdown>
-<h2>Automatisation des opérations</h2>
+<section>
+<h2>5. Automatisation des opérations</h2>
 </section>
 </div>
 </div>

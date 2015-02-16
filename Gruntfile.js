@@ -153,7 +153,8 @@ module.exports = function (grunt) {
     sass: {
       options: {
         sourceMap: true,
-        includePaths: ['bower_components']
+        includePaths: ['bower_components'],
+        debugInfo: true        
         },
       dist: {
         files: [{
@@ -161,7 +162,8 @@ module.exports = function (grunt) {
           cwd: '<%= config.app %>/styles',
           src: ['*.{scss,sass}'],
           dest: '.tmp/styles',
-          ext: '.css'
+          ext: '.css',
+          debugInfo: false
         }]
       },
       server: {

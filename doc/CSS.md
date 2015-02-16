@@ -116,7 +116,7 @@ HTML:
 ```
 
 *CSS Lint* http://csslint.net
-Util pour vérifier en permance que les bonne pratiques sont bien suivies et que le code est lisible.
+Outil servant à vérifier que les bonnes pratiques sont bien suivies et que le code reste lisible.
 
 ##### 2.1.2. Architecture
 - Rénitialiser les style des éléments HTML (css reset)
@@ -129,7 +129,7 @@ Util pour vérifier en permance que les bonne pratiques sont bien suivies et que
 - Les espacements horizontaux devrais toujours être exprimés en % pour des containers et en <b>em</b> ou <b>rem</b> pour du texte.</li>
 
 [KSS](http://warpspire.com/kss/styleguides/)
-Permet de générer un style d'après la documentation du code
+Permet de générer un guide stylistique d'après la documentation du code
 ```
 /*
 A button suitable for giving stars to someone.
@@ -160,11 +160,111 @@ a.button.star.disabled{
 ##### 2.2.1. Sass : Préprocesseur CSS
 Sass: Syntactically Awesome Style Sheets
 http://sass-lang.com/
-
 ![sass logo](../app/images/slides/logo-sass.svg)
 
-##### 2.2.2. Librairies
+###### Nesting / Imbrication
+Permet d'éviter les répétitions de selecteurs parent, et rend le CSS plus simple. 
 
+Example:
+
+<table border="0"><tr><td style="border: none !important;">
+<pre><code>#main {
+  width: 97%;
+  p, div {
+    font-size: 2em;
+    a { font-weight: bold; }
+  }
+  pre { font-size: 3em; }
+}</code></pre>
+</td><td style="border: none !important;">
+Compilé donne :
+<pre><code>#main {
+  width: 97%; }
+  #main p, #main div {
+    font-size: 2em; }
+    #main p a, #main div a {
+      font-weight: bold; }
+  #main pre {
+    font-size: 3em; }</code></pre>
+</td></tr></table>
+
+Référence au parent :  " & "
+
+```
+a {
+  font-weight: bold;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+  body.firefox & { font-weight: normal; }
+}
+```
+
+Concaténation
+
+```
+#main {
+  color: black;
+  &-sidebar { border: 1px solid; }
+}
+is compiled to:
+
+#main {
+  color: black; }
+  #main-sidebar {
+    border: 1px solid; }
+
+###### @include / @mixin
+
+###### @extend
+
+###### interpolation: #{}
+```
+$name: foo;
+$attr: border;
+p.#{$name} {
+  #{$attr}-color: blue;
+}
+```
+
+```
+@mixin firefox-message($selector) {
+  body.firefox #{$selector}:before {
+    content: "Hi, Firefox users!";
+  }
+}
+
+@include firefox-message(".header");
+```
+
+```
+p:before {
+  content: "I ate #{5 + 10} pies!";
+}
+```
+
+```
+p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+```
+
+###### @import
+```
+@import "foo.scss";
+@import "foo";
+``` 
+Importe tous les deux un fichier scss. Note que l'extension est optionnelle.
+"_" est implicitepour cette raison. On ne peut créer un partial et in non-partial dans le meme folder.
+
+Par contre les appels suivant créeer une règle css @import.
+```
+@import "foo.css";
+@import "foo" screen;
+@import "http://foo.com/bar";
+@import url(foo);
+```
 
 ##### 2.2.3. Fameworks CSS
 
@@ -196,7 +296,12 @@ http://thewebrocks.com/demos/3D-css-tester/
 http://desandro.github.io/3dtransforms/
 
 #### 2.4. Ressources
-[SMACSS](http://smacss.com)
-[CSS-Tricks](css-tricks.com)
-[Can I Use](http://caniuse.com/)
-http://thewebrocks.com/demos/3D-css-tester/
+* [Can I Use](http://caniuse.com/)
+* [SMACSS](http://smacss.com)
+* [CSS-Tricks](css-tricks.com)
+Style-guide generator
+	* [Comparison article](http://welchcanavan.com/styleguide-roundup/)
+	* [style-guide generator list](http://vinspee.me/style-guide-guide/)
+	* https://github.com/davidhund/styleguide-generators
+* https://github.com/davidhund/styleguide-generators
+* http://thewebrocks.com/demos/3D-css-tester/
