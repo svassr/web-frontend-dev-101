@@ -251,12 +251,14 @@ p {
 ```
 
 ###### @import
+Suffix "_" désigne les "partials".
 ```
 @import "foo.scss";
 @import "foo";
 ``` 
 Importe tous les deux un fichier scss. Note que l'extension est optionnelle.
-"_" est implicitepour cette raison. On ne peut créer un partial et in non-partial dans le meme folder.
+
+"_" est implicite. On ne peut donc pas créer un partial et un "non-partial" dans le même répertoire.
 
 Par contre les appels suivant créeer une règle css @import.
 ```
@@ -284,6 +286,32 @@ Par contre les appels suivant créeer une règle css @import.
 
 #### 2.3. CSS avancés
 ##### Pseudo selecteurs
+```:hover```, ```:selection```, ```:focus```, ```:target``` , 
+
+```:first-line```, ```:first-letter```
+
+```
+p:first-letter {text-decoration: underline;}
+p:first-line {color: #CB000F;}
+```
+
+```:before```, ```:after```, 
+
+```
+@media print {
+  a[href]:after {
+    content: " (" attr(href) ") ";
+  }
+}
+```
+
+```:first-child```, ```:last-child```, ```:nth-child(N)```, ```:nth-of-type(N)```, ```:first-of-type```, ...
+
+http://css-tricks.com/pseudo-element-roundup/
+http://css-tricks.com/pseudo-class-selectors/
+[:target demo](http://codepen.io/siiron/pen/pjyku)
+[:target demo](http://codepen.io/Rplus/pen/orpLx)
+
 ##### Formes géométriques
 ##### Animation
 ##### Media Queries
