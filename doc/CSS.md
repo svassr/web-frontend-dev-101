@@ -5,7 +5,7 @@
 ##### 2.1.1. Nomenclature
 
 1. Utiliser des classes uniquement pas des ID pour associer un style.
-Les id # sont uniques par conséquents ne sont pas réutilisables. Elles servent d'ancre dasn la page ou au javascript.
+Les id # sont uniques par conséquents ne sont pas réutilisables. Elles servent d'ancres dans la page ou pour associer des interactions javascript.
 
 2. Séparation du style et de la DOM (separation of concern).
 La classe ne nomme pas le style elle nomme l'objet au quel on va appliquer un style.
@@ -43,10 +43,10 @@ http://oocss.org
 - noms de classes courts
 - classes réutilisables
 - contextualisation
-- Modules élémentaires
+- Modules et templates élémentaires
 - Grille fluide
 
-Exemple
+Exemple ("media" module)
 
 HTML: 
 ```
@@ -120,10 +120,40 @@ Util pour vérifier en permance que les bonne pratiques sont bien suivies et que
 
 ##### 2.1.2. Architecture
 - Rénitialiser les style des éléments HTML (css reset)
-- Définir un guide stylistique (Style Guide)
-- Définir des modules pour les styles des blocs de contenu réutilisables
+- Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dasn une même page
+- Intégrer un guide stylistique (Style Guide)
+- Séparer les variables dans un même plusieurs fichiers (ex: vars.scss, colors.scss, fonts.scss, breakpoints.scss)
 - Une feuille de style pa module
 - Une feuille de style par page
+- Les espacements verticaux (vertical rythme) devrais toujours être exprimés en <b>em</b> ou <b>rem</b> car relatifs à la taille du texte.</li>
+- Les espacements horizontaux devrais toujours être exprimés en % pour des containers et en <b>em</b> ou <b>rem</b> pour du texte.</li>
+
+[KSS](http://warpspire.com/kss/styleguides/)
+Permet de générer un style d'après la documentation du code
+```
+/*
+A button suitable for giving stars to someone.
+
+:hover             - Subtle hover highlight.
+.stars-given       - A highlight indicating you've already given a star.
+.stars-given:hover - Subtle hover highlight on top of stars-given styling.
+.disabled          - Dims the button to indicate it cannot be used.
+
+Styleguide 2.1.3.
+*/
+a.button.star{
+  ...
+}
+a.button.star.stars-given{
+  ...
+}
+a.button.star.disabled{
+  ...
+}
+```
+
+![style-guide-medium](./app/images/slides/styleguide_medium.png)
+![style-guide-2](./app/images/slides/styleguide-2.png)
 
 #### 2.2. CSS Tools and library
 

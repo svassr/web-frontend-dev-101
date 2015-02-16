@@ -2,9 +2,9 @@
 // endbower
 
 body {
-  background: #fafafa;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
+  // background: #fafafa;
+  // font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // color: #333;
 }
 
 .hero-unit {
@@ -23,6 +23,7 @@ body {
   }
 }
 
+// message for outdated browsers
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -30,15 +31,32 @@ body {
   padding: 0.2em 0;
 }
 
-// overwrite reveal 
-.reveal .slides 
+
+// Helpers
+.left {
+  text-align: left;
+}
+
+
+.reveal {
+  font-size: 30px;
+}
+
+// 
+.reveal .slides {
+  
   & > section {
+
     & > section {
-      padding: 0 20px;
+      padding: 40px 0 20px 0;
       
       & > section {
-        padding: 100px 0 20px 0;
+        padding: 60px 0 20px 0;
       }
     }
   }
+}
+
+.reveal pre { 
+  font-size: 0.5em;
 }

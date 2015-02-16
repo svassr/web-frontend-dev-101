@@ -1,5 +1,3 @@
-console.log('\'Allo \'Allo!');
-
 // Full list of configuration options available at:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({

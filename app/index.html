@@ -5,14 +5,14 @@
     <title>web frontend dev 101</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
-    <link rel="stylesheet" type="text/css" href="bower_components/reveal.js/css/reveal.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/reveal.js/css/themes/black.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/reveal.js/css/theme/black.css">
     <!-- endbuild -->
     
     <!-- build:css(.tmp) styles/main.css -->
@@ -20,7 +20,7 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="../bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
 
   </head>
@@ -31,206 +31,270 @@
 
 
 <div class="slide reveal center">
-  <div class="slides">
+<div class="slides">
 
-    <!-- 1. Les outils du développeur frontend -->
+<!-- 1. Les outils du développeur frontend -->
+<section>
+    <h2>1. Outils du dev. frontend</h2>
+    <section></section>
+
     <section>
-        <h2>Les outils du développeur frontend</h2>
-
-        <section>
-          <h3>IDE</h3>
-          <ul>
-            <li>Sublime Text</li>
-            <li>IntelliJ / webstorm</li>
-            <li>Atom.io</li>
-          </ul>
-          <div>
-            <img src="./images/slides/Sublime_Text.png" width="128" height="128" alt="">
-            <img src="./images/slides/intelliJ-icon-128.png" width="128" height="128" alt="">
-            <img src="./images/slides/webstorm-icon-128.png" width="128" height="128" alt="">
-            <img src="./images/slides/atom.png" width="128" height="128" alt="">
-          </div>
-        </section>
-
-        <section>
-          <h3>Browsers devtools </h3>
-          <p>Outils de développement intégrés aux navigateurs</p>
-          <img src="./images/slides/chrome_firefox_opera_safari_ie-256.png" alt="Browsers" width="100%">
-        </section>
-
+    <h3>1.1 IDE</h3>
+    <ul>
+    <li class="fragment" data-fragment-index="1" >Sublime Text</li>
+    <li class="fragment" data-fragment-index="2" >IntelliJ / webstorm</li>
+    <li class="fragment" data-fragment-index="3" >Atom.io</li>
+    </ul>
+    <div>
+    <img  class="fragment" data-fragment-index="1" src="./images/slides/Sublime_Text.png" width="128" height="128" alt="">
+    <img  class="fragment" data-fragment-index="2" src="./images/slides/intelliJ-icon-128.png" width="128" height="128" alt="">
+    <img  class="fragment" data-fragment-index="2" src="./images/slides/webstorm-icon-128.png" width="128" height="128" alt="">
+    <img  class="fragment" data-fragment-index="3" src="./images/slides/atom.png" width="128" height="128" alt="">
+    </div>
     </section>
 
-    <!-- 2. CSS -->
     <section>
-      <h2>CSS</h2>
+    <h3>1.2. Browsers devtools </h3>
+    <p>Outils de développement intégrés aux navigateurs</p>
+    <img src="./images/slides/chrome_firefox_opera_safari_ie-256.png" alt="Browsers" width="100%">
+    </section>
 
-      <!-- 2.1 Bonnes pratiques -->
-      <section>
-        <h3>2.1. Bonnes pratiques</h3>
-        <section data-markdown>
-<h4>2.1.1. Nomenclature</h4>
-1. Utiliser des classes uniquement pas des ID pour associer un style.
-Les id # sont uniques par conséquents ne sont pas réutilisables. Elles servent d'ancre dasn la page ou au javascript.
+</section>
 
-2. Séparation du style et de la DOM (separation of concern).
-La classe ne nomme pas le style elle nomme l'objet au quel on va appliquer un style.
+<!-- 2. CSS -->
+<section data-background="#4d7e65" >
+<h2>2. CSS</h2>
 
-Mauvaise pratique
-HTML:
-```
-<a href="#alert" class="red">Atttention ...</a>
-```
-CSS :
-```
-.red {
+<!-- 2.1 Bonnes pratiques -->
+
+<section>
+<h3>2.1. Bonnes pratiques</h3>
+</section>
+
+<section data-markdown >
+#### 2.1.1. Nomenclature
+1. Utiliser des classes uniquement pas des ID pour associer un style. Les id # sont uniques par conséquents ne sont pas réutilisables. Elles servent d'ancre dans la page ou au javascript.
+
+2. Séparation du style et de la DOM (separation of concern). La classe ne nomme pas le style elle nomme l'objet au quel on va appliquer un style.
+</section>
+
+<section>
+<h5>Mauvaise pratique</h5>
+<h6>HTML:</h6>
+<pre><code class="hljs html"><a href="#alert" class="red">Atttention ...</a></code></pre>
+
+<h6>CSS :</h6>
+<pre><code class="hljs css">.red {
   color: #00F;
-}
-```
+}</code></pre>
+</section>
 
-Bonne pratique
+<section>
+<h5>Bonne pratique</h5>
+<h6>HTML:</h6>
+<pre><code class=" hljs html" ><a href="#alert" class="lien-important" >Atttention ...</a></code></pre>
 
-HTML:
-```
-<a href="#alert" class="lien-important" >Atttention ...</a>
-```
-CSS :
-```
-.lien-important {
-  color: #00F;
-}
-```
+<h6>CSS :</h6>
+<pre><code class="css">.lien-important {
+    color: #00F;
+}</code></pre>
+</section>
 
-####### CSS Orientté objet
+<section  data-markdown>
+###### CSS Orientté objet
+</section>
 
-*OOCSS (Object Oriented CSS)*
+<section data-markdown ><script type="text/template" >
+###### OOCSS 
 http://oocss.org
 
 - noms de classes courts
 - classes réutilisables
 - contextualisation
-- Modules élémentaires
+- Modules et templates élémentaires
 - Grille fluide
+</section>
+</script></section>
 
-Exemple
+<section>
+Exemple ("media" module)
 
 HTML: 
-```
-<div class="media attribution">
-
-  <a href="http://twitter.com/stubbornella" class="img">
-    <img src="http://stubbornella.com/profile_image.jpg" alt="me" />
-  </a>
-
-  <div class="bd">
-    @Stubbornella 14 minutes ago
-  </div>
-
-</div>
-```
+<pre><code class="html"><div class="media attribution">
+    <a href="http://twitter.com/stubbornella" class="img">
+        <img src="http://stubbornella.com/profile_image.jpg" alt="me" />
+    </a>
+    <div class="bd">
+        @Stubbornella 14 minutes ago
+    </div>
+</div></code></pre>
 
 CSS: 
-```
-/* ====== media ====== */
+<pre><code class="hlght css">   /* ====== media ====== */
 .media {margin:10px;}
 .media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
 .media .img {float:left; margin-right: 10px;}
 .media .img img{display:block;}
 .media .imgExt{float:right; margin-left: 10px;}
-```
+</code></pre>
+</section>
 
+<section  data-markdown>
 Inconvénients:
-- Classes gigognes (imbriquées) rend analyse du CSS plus lent.
-- Maintenance difficile
-  - Conflits possibles
-  - Surcharge souvent nécessaire
 
-###### BEM = Block, Element, Modifier
+* Classes gigognes (imbriquées) rend analyse du CSS plus lent.
+* Maintenance difficile
+* Conflits possibles
+* Surcharge souvent nécessaire
+</section>
+
+<section  data-markdown>
+<script type="text/template">
+###### BEM (Block, Element, Modifier)
 http://bem.info/
-http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
 
 - Nomenclature orienté objet 
 - Tire profit des préprocesseurs CSS
 - Rend compte des héritages
-- Facilite la maintenance et l'évolution du site
+- Facilite la maintenance et l évolution du site
 
 ```
 .block {}
 .block__element {}
 .block--modifier {}
-```
+```</script>
+</section>
 
-Exemple
+<section  class=" hljs" >
+<h7>Exemple</h7><br/>
 
-CSS: 
-```
-.media {}
+<h8 class="left">CSS:</h8> 
+<pre><code class=" hljs css">.media {}
 .media__img {}
 .media__img--rev {}
-.media__body {}
-```
+.media__body {}</code></pre>
 
-HTML: 
-```
-<div class="media">
+<h8 class="left">HTML:</h8> 
+<pre><code class="html" ><div class="media">
     <img src="logo.png" alt="Foo Corp logo" class="media__img--rev">
     <div class="media__body">
         <h3 class="alpha">Welcome to Foo Corp</h3>
         <p class="lede">Foo Corp is the best, seriously!</p>
     </div>
-</div>
-```
+</div></code></pre>
+</section>
 
-*CSS Lint* http://csslint.net
+<section>
+<b>CSS Lint</b> http://csslint.net
 Util pour vérifier en permance que les bonne pratiques sont bien suivies et que le code est lisible.
-        </section>
+</section>
+<!-- END 2.1.1. Nomenclature -->
 
-          <section>
-            <h4>2.1.2. Architecture </h4>
-            </section>
-          </section>
+<section>
+<h4>2.1.2. Architecture </h4>
+<ul>
+    <li data-fragment-index="1">Rénitialiser les style des éléments HTML (css reset)</li>
+    <li data-fragment-index="2">Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dasn une même page</li>
+    <li data-fragment-index="3">Intégrer un guide stylistique (Style Guide)</li>
+</ul>
+</section>
 
-          <!-- 2.2. CSS Tools and library -->
-          <section>
-            <h3>2.2. CSS Tools and library</h3>
-          </section>
+<section>
+    <img src="./images/slides/styleguide_medium.png" width="100%" height="auto" alt="">
+</section>
 
-          <!-- 2.3. CSS avancés -->
-          <section>
-            <h3>2.3. CSS avancés</h3>
-          </section>
+<section>
+    <img src="./images/slides/styleguide-2.png" width="650" height="369" alt="">
+</section>
 
-          <!-- 2.4. Ressources -->
-          <section>
-            <h3>2.4. Ressources</h3>
-          </section>
+<section>
+<h6>KSS http://warpspire.com/kss/styleguides/</h6>
+<p>Permet de générer un guide stylistique d'après la documentation du code</p>
+<pre><code class="hljs css">/*
+A button suitable for giving stars to someone.
 
-        </section>
+:hover             - Subtle hover highlight.
+.stars-given       - A highlight indicating you've already given a star.
+.stars-given:hover - Subtle hover highlight on top of stars-given styling.
+.disabled          - Dims the button to indicate it cannot be used.
 
-        <!-- 3. Concevoir pour des appareils variés -->
-        <section>
-          <h2>Concevoir pour des appareils variés</h2>
-        </section>
+Styleguide 2.1.3.
+*/
+a.button.star{
+  ...
+}
+a.button.star.stars-given{
+  ...
+}
+a.button.star.disabled{
+  ...
+}</code></pre>
+</section>
 
-        <!-- 4. Javascript -->
-        <section>
-          <h2>Javascript</h2>
-        </section>
+<section>
+<h4>2.1.2. Architecture </h4>
+<ul>
+    <li>Rénitialiser les style des éléments HTML (css reset)</li>
+    <li>Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dasn une même page</li>
+    <li>Intégrer un guide stylistique (Style Guide)</li>
+    <li data-fragment-index="4"><i>Séparer les variables dans un ou plusieurs fichiers (ex: vars.scss, colors.scss, fonts.scss, breakpoints.scss)</li>
+    <li data-fragment-index="4">Une feuille de style par module</li>
+    <li data-fragment-index="5">Une feuille de style par page</li>
+    <li data-fragment-index="6">Espacements verticaux (vertical rythme) toujours exprimés en <b>em</b> ou <b>rem</b></li>
+</ul>
+</section>
 
-        <!-- 5. Automatisation des opérations -->
-        <section>
-          <h2>Automatisation des opérations</h2>
-        </section>
-      </div>
-    </div>
+<!-- 2.2. CSS Tools and library -->
+<section  data-markdown>
+<h3>2.2. CSS Tools and library</h3>
+</section>
+
+<!-- 2.3. CSS avancés -->
+<section  data-markdown>
+<h3>2.3. CSS avancés</h3>
+</section>
+
+<!-- 2.4. Ressources -->
+<section  data-markdown>
+<h3>2.4. Ressources</h3>
+</section>
+
+</section>
+<!-- END 2. CSS -->
+
+<!-- 3. Concevoir pour des appareils variés -->
+<section  data-markdown>
+<h2>Concevoir pour des appareils variés</h2>
+</section>
+
+<!-- 4. Javascript -->
+<section  data-markdown>
+<h2>Javascript</h2>
+</section>
+
+<!-- 5. Automatisation des opérations -->
+<section  data-markdown>
+<h2>Automatisation des opérations</h2>
+</section>
+</div>
+</div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.js"></script>
     <script src="bower_components/classlist/classList.js"></script>
     <script src="bower_components/headjs/dist/1.0.0/head.min.js"></script>
     <!-- endbower -->
-    <script src="bower_components/reveal.js/js/reveal.js"></script>/
+    <script src="../bower_components/reveal.js/plugin/markdown/marked.js"></script>
+    <script src="../bower_components/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../bower_components/reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../bower_components/reveal.js/plugin/zoom-js/zoom.js"></script>
+    <script src="../bower_components/reveal.js/plugin/search/search.js"></script>
+
     <!-- endbuild -->
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
