@@ -12,11 +12,11 @@ La classe ne nomme pas le style elle nomme l'objet au quel on va appliquer un st
 
 Mauvaise pratique
 HTML:
-```
+```html
 <a href="#alert" class="red">Atttention ...</a>
 ```
 CSS :
-```
+```css
 .red {
 	color: #00F;
 }
@@ -25,11 +25,11 @@ CSS :
 Bonne pratique
 
 HTML:
-```
+```html
 <a href="#alert" class="lien-important" >Atttention ...</a>
 ```
 CSS :
-```
+```css
 .lien-important {
 	color: #00F;
 }
@@ -49,7 +49,7 @@ http://oocss.org
 Exemple ("media" module)
 
 HTML: 
-```
+```html
 <div class="media attribution">
 
   <a href="http://twitter.com/stubbornella" class="img">
@@ -64,7 +64,7 @@ HTML:
 ```
 
 CSS: 
-```
+```css
 /* ====== media ====== */
 .media {margin:10px;}
 .media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
@@ -88,7 +88,7 @@ http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
 - Rend compte des héritages
 - Facilite la maintenance et l'évolution du site
 
-```
+```css
 .block {}
 .block__element {}
 .block--modifier {}
@@ -97,7 +97,7 @@ http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
 Exemple
 
 CSS: 
-```
+```css
 .media {}
 .media__img {}
 .media__img--rev {}
@@ -105,7 +105,7 @@ CSS:
 ```
 
 HTML: 
-```
+```html
 <div class="media">
     <img src="logo.png" alt="Foo Corp logo" class="media__img--rev">
     <div class="media__body">
@@ -115,7 +115,7 @@ HTML:
 </div>
 ```
 
-*CSS Lint* http://csslint.net
+###### *CSS Lint* http://csslint.net
 Outil servant à vérifier que les bonnes pratiques sont bien suivies et que le code reste lisible.
 
 ##### 2.1.2. Architecture
@@ -128,9 +128,9 @@ Outil servant à vérifier que les bonnes pratiques sont bien suivies et que le 
 - Les espacements verticaux (vertical rythme) devrais toujours être exprimés en <b>em</b> ou <b>rem</b> car relatifs à la taille du texte.</li>
 - Les espacements horizontaux devrais toujours être exprimés en % pour des containers et en <b>em</b> ou <b>rem</b> pour du texte.</li>
 
-[KSS](http://warpspire.com/kss/styleguides/)
+###### [KSS](http://warpspire.com/kss/styleguides/)
 Permet de générer un guide stylistique d'après la documentation du code
-```
+```css
 /*
 A button suitable for giving stars to someone.
 
@@ -152,8 +152,8 @@ a.button.star.disabled{
 }
 ```
 
-![style-guide-medium](./app/images/slides/styleguide_medium.png)
-![style-guide-2](./app/images/slides/styleguide-2.png)
+![style-guide-medium](../app/images/slides/styleguide_medium.png)
+![style-guide-2](../app/images/slides/styleguide-2.png)
 
 #### 2.2. CSS Tools and library
 
@@ -165,32 +165,35 @@ http://sass-lang.com/
 ###### Nesting / Imbrication
 Permet d'éviter les répétitions de selecteurs parent, et rend le CSS plus simple. 
 
-Example:
+- Exemple:
 
-<table border="0"><tr><td style="border: none !important;">
-<pre><code>#main {
+```scss
+#main {
   width: 97%;
   p, div {
     font-size: 2em;
     a { font-weight: bold; }
   }
   pre { font-size: 3em; }
-}</code></pre>
-</td><td style="border: none !important;">
+}
+```
+
 Compilé donne :
-<pre><code>#main {
+```css
+#main {
   width: 97%; }
   #main p, #main div {
     font-size: 2em; }
     #main p a, #main div a {
       font-weight: bold; }
   #main pre {
-    font-size: 3em; }</code></pre>
-</td></tr></table>
-
-Référence au parent :  " & "
-
+    font-size: 3em; }
 ```
+
+
+- Référence au parent :  " & "
+
+```scss
 a {
   font-weight: bold;
   text-decoration: none;
@@ -199,26 +202,100 @@ a {
 }
 ```
 
-Concaténation
+- Concaténation
 
+scss :
 ```
 #main {
   color: black;
   &-sidebar { border: 1px solid; }
 }
-is compiled to:
-
+```
+css :
+```
 #main {
   color: black; }
   #main-sidebar {
     border: 1px solid; }
+```
 
 ###### @include / @mixin
+```scss
+@mixin silly-links {
+  a {
+    color: blue;
+    background-color: red;
+  }
+}
+@include silly-links;
+```
+
+```scss
+@mixin clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}```
+
+```scss
+@mixin sexy-border($color, $width) {
+  border: {
+    color: $color;
+    width: $width;
+    style: dashed;
+  }
+}
+
+p { @include sexy-border(blue, 1in); }
+```
+
+```scss
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}
+```
+
 
 ###### @extend
+scss:
+```scss
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+```
+css :
+```css
+.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+.seriousError {
+  border-width: 3px;
+}
+```
+</section>
+
 
 ###### interpolation: #{}
-```
+```scss
 $name: foo;
 $attr: border;
 p.#{$name} {
@@ -226,23 +303,22 @@ p.#{$name} {
 }
 ```
 
-```
+```scss
 @mixin firefox-message($selector) {
   body.firefox #{$selector}:before {
     content: "Hi, Firefox users!";
   }
 }
-
 @include firefox-message(".header");
 ```
 
-```
+```scss
 p:before {
   content: "I ate #{5 + 10} pies!";
 }
 ```
 
-```
+```scss
 p {
   $font-size: 12px;
   $line-height: 30px;
@@ -252,16 +328,19 @@ p {
 
 ###### @import
 Suffix "_" désigne les "partials".
-```
+
+```scss
 @import "foo.scss";
 @import "foo";
 ``` 
+
 Importe tous les deux un fichier scss. Note que l'extension est optionnelle.
 
 "_" est implicite. On ne peut donc pas créer un partial et un "non-partial" dans le même répertoire.
 
 Par contre les appels suivant créeer une règle css @import.
-```
+
+```scss
 @import "foo.css";
 @import "foo" screen;
 @import "http://foo.com/bar";
@@ -290,14 +369,14 @@ Par contre les appels suivant créeer une règle css @import.
 
 ```:first-line```, ```:first-letter```
 
-```
+```css
 p:first-letter {text-decoration: underline;}
 p:first-line {color: #CB000F;}
 ```
 
 ```:before```, ```:after```, 
 
-```
+```css
 @media print {
   a[href]:after {
     content: " (" attr(href) ") ";
@@ -313,13 +392,78 @@ http://css-tricks.com/pseudo-class-selectors/
 [:target demo](http://codepen.io/Rplus/pen/orpLx)
 
 ##### Formes géométriques
-##### Animation
-##### Media Queries
+
+###### Triangle
+![](../app/images/slides/triangle-example.gif)
+![](../app/images/slides/triangle.png)
+
+http://codepen.io/svassr/pen/radBMP
+
+###### Hexadgone
+
+http://codepen.io/svassr/pen/azqeYR?editors=110
+
+[Mask hexagonal](http://codepen.io/svassr/pen/NPyQVg?editors=110) 
+
+###### Losange
+```css
+.parallelogramme {
+  width: 8em; height: 8em; /* some arbitrary value */
+  transform: skewX(36deg);
+  background: lightblue; /*make it visible*/
+}
+```
+![skew](../app/images/slides/skew.png)
+![star](../app/images/slides/sass-mixin-star__rhombius.png)
+
+http://codepen.io/svassr/pen/wBmwWq?editors=110
+
+
+###### Arrondis : Border-radius
+http://codepen.io/svassr/pen/QwQeZg?editors=110
+
+Etc. : http://css-tricks.com/examples/ShapesOfCSS/
+
+
+##### Animation CSS
+Transition
+```css
+div {
+    transition-property: opacity;
+    transition-duration: 2s;
+    /* optional */
+    transition-timing-function: ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | steps(<integer>[, [ start | end ] ]?);
+    transition-delay: 0.5s; 
+}
+```
+
+```css
+transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+```
+
+```css
+transition: opacity 1s linear, transform ease-in-out 1.5;
+```
+http://codepen.io/impressivewebs/pen/zohgt?editors=110
+
+
+Animation
+http://codepen.io/svassr/pen/YPaKrG?editors=110
+
+##### [Media Queries](http://css-tricks.com/css-media-queries/)
+```html
+<link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 900px)' href='css/medium.css' />
+```
+
 
 ##### Flex-box
 http://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
+
 ##### transform
+Jeu de propriétés permettant d'efectuer des transformations 2d et 3d.
+![tridiv](../app/images/slides/tridiv.jpg)
+
 http://thewebrocks.com/demos/3D-css-tester/
 http://desandro.github.io/3dtransforms/
 
@@ -332,4 +476,7 @@ Style-guide generator
 	* [style-guide generator list](http://vinspee.me/style-guide-guide/)
 	* https://github.com/davidhund/styleguide-generators
 * https://github.com/davidhund/styleguide-generators
+* pseudo selecteurs : http://quirksmode.org/css/selectors/
 * http://thewebrocks.com/demos/3D-css-tester/
+* Shapes : http://codepen.io/thebabydino/full/ca5fdb3582a6a27e4d3988d6d90952cb
+* Animation : http://css-tricks.com/css-animation-tricks/
