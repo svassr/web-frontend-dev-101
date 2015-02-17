@@ -18,7 +18,24 @@ Le positionnement des éléments devrait toujours suivre le flow de la page ou �
 #### Responsive design
 
 #### Choix et optimisation des assets
+
+Préférer les images vectorielles
+
 ![asstes vectorielle](http://h.fastcompany.net/multisite_files/fastcompany/imagecache/inline-large/inline/2014/11/3038367-inline-i-9-9-gifs-that-explain-responsive-design-brilliantly-09vectors-vs-images-1-copy.gif)
+
+```
+@mixin background-dpi($basename, $ext: 'png') {
+    $filename: $basename + '.' + $ext;
+    background-image: image-url($filename);
+    @include hidpi {
+        background-image: image-url($basename + '-2x.' + $ext);
+        background-size: image-width($filename) image-height($filename);
+    }
+    background-color: transparent; /* avoid flickering on some browsers */
+}
+
+@include background-dpi('mybutton', $ext: 'png')
+```
 
 #### Mobile first Design
 ![Mobile first](http://f.fastcompany.net/multisite_files/fastcompany/imagecache/inline-large/inline/2014/11/3038367-inline-i-8-9-gifs-that-explain-responsive-design-brilliantly-08desktop-first-vs-mobile-first-3-copy.gif)
