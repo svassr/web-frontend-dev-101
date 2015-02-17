@@ -476,7 +476,9 @@ Style-guide generator
 	* [style-guide generator list](http://vinspee.me/style-guide-guide/)
 	* https://github.com/davidhund/styleguide-generators
 * https://github.com/davidhund/styleguide-generators
-* pseudo selecteurs : http://quirksmode.org/css/selectors/
+* pseudo selecteurs 
+	* http://quirksmode.org/css/selectors/
+	* http://css-tricks.com/pseudo-class-selectors/
 * http://thewebrocks.com/demos/3D-css-tester/
 * Shapes : http://codepen.io/thebabydino/full/ca5fdb3582a6a27e4d3988d6d90952cb
 * Animation : http://css-tricks.com/css-animation-tricks/

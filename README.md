@@ -7,6 +7,13 @@ Presentation of web front-end development basis for beginners
 1. [Les outils du développeur frontend](./doc/outils-dev-fronend.md)
 	1. IDE
 	* Browser dev Tools
+* [Concevoir pour des appareils variés](./doc/multi-support.md)
+	1. Fixed design
+	* Fluid design
+	* Adaptative design
+	* Responsive design
+	* Choix et optimisation des assets
+	* Mobile first Design
 * [CSS](./doc/CSS.md)
 	1. Bonnes pratiques
 		* Nomenclature
@@ -22,13 +29,6 @@ Presentation of web front-end development basis for beginners
 		* Media Queries
 		* Flex box
 	* Ressources
-* [Concevoir pour des appareils variés](./doc/multi-support.md)
-	1. Fixed design
-	* Fluid design
-	* Adaptative design
-	* Responsive design
-	* Choix et optimisation des assets
-	* Mobile first Design
 * [Javascript](./doc/Javascript.md)
 	1. Code patterns
 		* Literal Object
