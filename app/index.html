@@ -13,6 +13,7 @@
     <!-- endbower -->
     <link rel="stylesheet" type="text/css" href="../bower_components/reveal.js/css/reveal.css">
     <link rel="stylesheet" type="text/css" href="../bower_components/reveal.js/css/theme/black.css">
+    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
     <!-- endbuild -->
     
     <!-- build:css(.tmp) styles/main.css -->
@@ -61,21 +62,136 @@
 
 </section>
 
-<!-- 2. CSS data-background="#4d7e65"  -->
+
+<!-- 2. Concevoir pour des appareils variés -->
+<section>
+<h2>2. Concevoir pour des appareils variés</h2>
+
+<section data-markdown >
+<img src="http://www.hyperarts.com/wp-wp/wp-content/uploads/2013/10/the-web.jpg" alt="web today">
+</section>
+
+<section data-markdown >
+#### Fixed design vs Fluid design
+![Static vs Relative Units](http://f.fastcompany.net/multisite_files/fastcompany/imagecache/inline-large/inline/2014/11/3038367-inline-i-2-9-gifs-that-explain-responsive-design-brilliantly-02relative-units-vs-static-units-1-copy.gif)
+
+- Fixed design: dimensions in pixel
+- Fluid design: dimensions in %
+
+http://www.liquidapsive.com/
+</section>
+
+<section data-markdown >
+![Conserver le flow](http://e.fastcompany.net/multisite_files/fastcompany/imagecache/inline-large/inline/2014/11/3038367-inline-i-4-9-gifs-that-explain-responsive-design-brilliantly-04flow-vs-static-2-copy.gif)
+
+Le positionnement des éléments devrait toujours suivre le flow de la page ou être relatif à leur parents si nécessaire. Éviter les positionnements statiques.
+http://www.liquidapsive.com/
+</section>
+
+<section data-markdown >
+#### Adaptative design
+![Adaptative vs REsponsive](http://f.fastcompany.net/multisite_files/fastcompany/imagecache/inline-large/inline/2014/11/3038367-inline-i-1-9-gifs-that-explain-responsive-design-brilliantly-01responsive-vs-adaptive-copy.gif)
+
+- Nombre de breakpoint limités (limite min) souvent mobile/tablette/desktop
+- Design optimum lorsque son cadre est proche des limites de l'écran
+- Les appareils dictes les breakpoints
+- Design optimum seulement sur queslques appareils
+http://www.liquidapsive.com/
+</section>
+
+<section data-markdown >
+#### Responsive design
+
+- Mélange de design fluide et adaptatif
+- Le contenu dicte les breakpoints
+- chaque élément dispose de ses propres breakpoints si nécéssaire
+</section>
+
+
+<section data-markdown >
+#### Mobile first Design
+![Mobile first](http://f.fastcompany.net/multisite_files/fastcompany/imagecache/inline-large/inline/2014/11/3038367-inline-i-8-9-gifs-that-explain-responsive-design-brilliantly-08desktop-first-vs-mobile-first-3-copy.gif)
+
+- Designer la simple expression, puis la plus complexe
+- Enrichir et non restreindre
+- Solution plus légères, plus efficaces
+</section>
+</section>
+
+
+<section data-markdown >
+#### Choix et optimisation des assets
+</section>
+
+
+<section>
+<h3>Choix et optimisation des assets</h3>
+
+<section data-markdown>
+Préférer les images vectorielles
+
+![assets vectorielle](http://h.fastcompany.net/multisite_files/fastcompany/imagecache/inline-large/inline/2014/11/3038367-inline-i-9-9-gifs-that-explain-responsive-design-brilliantly-09vectors-vs-images-1-copy.gif)
+</section>
+
+<section>
+Utiliser des fonts d'icones
+<img src="./images/slides/font-icon.png" alt="" width="100%" >
+</section>
+
+<section>
+  <p>Utilisez des services tiers pour créer et organiser les icones/fonts</p>
+  <a href="http://fortawesome.github.io/Font-Awesome/"><img src="./images/slides/font-awesome-sample.png" alt="" width="38%" style="float:left; clear:left"></a>
+  <a href="http://fontastic.me/"><img src="./images/slides/fontastic.png" alt="" width="20%" ></a>
+  <br><br><br>
+  <ul>
+    <li>Uploader et convertir .svg en font</li>
+    <li>Génère tous formats wefonts</li>
+    <li>Sauvegarder/organiser</li>
+    <li>CSS tools</li>
+  </ul>
+</section>
+
+<section>
+<p>Prévoirs des images pour différentes densité de pixels</p>
+<pre><code style="font-size:25px; line-height: 120%;">ldpi | mdpi | tvdpi | hdpi | xhdpi | xxhdpi | xxxhdpi
+0.75 | 1    | 1.33  | 1.5  | 2     | 3      | 4
+</code></pre>
+</section>
+
+<section>
+<pre><code class="hljs css">@mixin background-dpi($basename, $ext: 'png') {
+    $filename: $basename + '.' + $ext;
+    background-image: image-url($filename);
+    @include hidpi {
+        background-image: image-url($basename + '-2x.' + $ext);
+        background-size: image-width($filename) image-height($filename);
+    }
+    background-color: transparent; /* avoid flickering on some browsers */
+}
+
+@include background-dpi('mybutton', $ext: 'png')
+</code></pre>
+</section>
+</section>
+
+
+
+
+<!-- 3. CSS data-background="#4d7e65"  -->
 <section> 
-<h2>2. CSS</h2>
+<h2>3. CSS</h2>
 </section>
 
-<!-- 2.1 Bonnes pratiques -->
+<!-- 3.1 Bonnes pratiques -->
 <section>
-<h3>2.1. Bonnes pratiques</h3>
+<h3>3.1. Bonnes pratiques</h3>
 </section>
 
 <section>
-<h3 class="fragment" data-fragment-id="0" >2.1.1. Nomenclature</h3>
-<p class="fragment" data-fragment-id="1">1. Utiliser des classes uniquement. Les id (#) sont uniques. Elles servent d'ancre dans la page ou au javascript.</p>
-
-<p class="fragment" data-fragment-id="2">2. Séparation du style et de la DOM (separation of concern). La classe ne nomme pas le style elle nomme l'objet au quel on va appliquer un style.</p>
+<h3 class="fragment" data-fragment-id="0" >3.1.1. Nomenclature</h3>
+<p class="fragment" data-fragment-id="1">1. Utiliser des classes préférablement.<br>Les id(#) sont uniques, ils servent d'ancre dans la page ou au javascript.</p>
+<br>
+<p class="fragment" data-fragment-id="2">2. Séparation du style et de la DOM (separation of concern).<br>La classe ne nomme pas le style elle nomme, l'objet auquel s'applique le style.</p>
 </section>
 
 <section>
@@ -101,7 +217,7 @@
 </section>
 
 <section>
-<h4>CSS Orientté objet</h4>
+<h4>CSS Orienté objet</h4>
 </section>
 
 <section data-markdown ><script type="text/template" >
@@ -118,7 +234,7 @@ http://oocss.org
 
 <section>
 Exemple ("media" module)
-
+<br/>
 HTML: 
 <pre><code class="html"><div class="media attribution">
     <a href="http://twitter.com/stubbornella" class="img">
@@ -185,7 +301,8 @@ http://bem.info/
 </section>
 
 <section>
-<p><b>CSS Lint</b> http://csslint.net</p>
+<p><b>CSS Lint</b><br> 
+http://csslint.net</p>
 <p>Outil servant à vérifier que les bonnes pratiques sont bien suivies.</p>
 </section>
 <!-- END 2.1.1. Nomenclature -->
@@ -193,10 +310,10 @@ http://bem.info/
 
 <!-- Architecture -->
 <section>
-<h4>2.1.2. Architecture </h4>
+<h4>3.1.2. Architecture </h4>
 <ul>
     <li  class="fragment" data-fragment-index="1">Rénitialiser les style des éléments HTML (css reset)</li>
-    <li  class="fragment" data-fragment-index="2">Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dasn une même page</li>
+    <li  class="fragment" data-fragment-index="2">Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dans une même page</li>
     <li  class="fragment" data-fragment-index="3">Intégrer un guide stylistique (Style Guide)</li>
 </ul>
 </section>
@@ -241,10 +358,10 @@ a.button.star.disabled{
 
 
 <section>
-<h4>2.1.2. Architecture </h4>
+<h4>3.1.2. Architecture </h4>
 <ul>
     <li>Rénitialiser les style des éléments HTML (css reset)</li>
-    <li>Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dasn une même page</li>
+    <li>Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dans une même page</li>
     <li>Intégrer un guide stylistique (Style Guide)</li>
     <li class="fragment" data-fragment-index="4">Séparer les variables dans un ou plusieurs fichiers (ex: vars.scss, colors.scss, fonts.scss, breakpoints.scss)</li>
     <li class="fragment" data-fragment-index="5">Une feuille de style par module</li>
@@ -257,11 +374,11 @@ a.button.star.disabled{
 
 <!-- 2.2. CSS Tools and library -->
 <section>
-<h3>2.2. CSS Tools and libraries</h3>
+<h3>3.2. CSS Tools and libraries</h3>
 </section>
 
 <section>
-<h4>2.2.1. Sass : Préprocesseur CSS</h4>
+<h4>3.2.1. Sass : Préprocesseur CSS</h4>
 <p>Syntactically Awesome Style Sheets</p>
 <a href="http://sass-lang.com/" >http://sass-lang.com/</a><br>
 <img alt="sass logo" src="./images/slides/logo-sass.svg" width="30%">
@@ -381,6 +498,22 @@ p { @include sexy-border(blue, 1in); }
 }</code></pre>
 </section>
 
+<section data-markdown >
+```
+@mixin background-dpi($basename, $ext: 'png') {
+    $filename: $basename + '.' + $ext;
+    background-image: image-url($filename);
+    @include hidpi {
+        background-image: image-url($basename + '-2x.' + $ext);
+        background-size: image-width($filename) image-height($filename);
+    }
+    background-color: transparent; /* avoid flickering on some browsers */
+}
+
+@include background-dpi('mybutton', $ext: 'png')
+```
+</section>
+
 </section>
 <!-- close mixin section -->
 
@@ -474,7 +607,7 @@ Par contre les appels suivant créeer une règle css @import.
 
 
 <section>
-<h5>2.2.3. Fameworks CSS</h5>
+<h5>3.2.3. Fameworks CSS</h5>
 <ul>
 <li><a href="http://compass-style.org/">Compass</a> +sprite generator, -lent</li>
 <li><a href="http://bourbon.io/">Bourbon.io</a> </li>
@@ -494,18 +627,23 @@ Par contre les appels suivant créeer une règle css @import.
 
 <!-- 2.3. CSS avancés -->
 <section>
-<h3>2.3. CSS avancés</h3>
+<h3>3.3. CSS avancés</h3>
 </section>
-<section data-markdown>##### Pseudo selecteurs
-```:hover```, ```:selection```, ```:focus```, ```:target``` , 
 
+<section>
+<h5>3.3.1 Pseudo sélecteurs</h5>
+
+<div class="fragment" data-fragment-index="1" data-markdown>```:hover```, ```:selection```, ```:focus```, ```:target``` , </div>
+
+<div class="fragment" data-fragment-index="2" data-markdown>
 ```:first-line```, ```:first-letter```
 
 ```
 p:first-letter {text-decoration: underline;}
 p:first-line {color: #CB000F;}
 ```
-
+</div>
+<div class="fragment" data-fragment-index="3" data-markdown>
 ```:before```, ```:after```, 
 
 ```
@@ -515,16 +653,28 @@ p:first-line {color: #CB000F;}
   }
 }
 ```
+</div>
+<div class="fragment" data-fragment-index="4" data-markdown>
+```:first-child```, ```:last-child```, ```:first-of-type```,
 
-```:first-child```, ```:last-child```, ```:nth-child(N)```, ```:nth-of-type(N)```, ```:first-of-type```, ...
-
-http://css-tricks.com/pseudo-element-roundup/
-http://css-tricks.com/pseudo-class-selectors/
-[:target demo](http://codepen.io/siiron/pen/pjyku)
-[:target demo](http://codepen.io/Rplus/pen/orpLx)
+```:nth-child(N)```, ```:nth-of-type(N)```,  ...
+</div>
+</section>
+<section data-markdown>
+- Demo 
+  - http://codepen.io/siiron/pen/pjyku
+  - http://codepen.io/Rplus/pen/orpLx
+- Ressources
+  - http://css-tricks.com/pseudo-element-roundup/
+  - http://css-tricks.com/pseudo-class-selectors/
 </section>
 
-<section><h5>Formes géométriques</h5>
+<section><h5>3.3.2. Formes géométriques</h5></section>
+
+<section>
+<h5>3.3.2. Formes géométriques</h5>
+
+<section> </section>
 <section data-markdown>
 ###### Triangle
 ![](./images/slides/triangle-example.gif)
@@ -532,18 +682,261 @@ http://css-tricks.com/pseudo-class-selectors/
 
 http://codepen.io/svassr/pen/radBMP
 </section>
+
+<section data-markdown>
+###### Hexagone
+
+http://codepen.io/svassr/pen/azqeYR?editors=110
+
+[Masque hexagonal](http://codepen.io/svassr/pen/NPyQVg?editors=110) 
 </section>
 
-<section><h5>Animation</h5></section>
-<section><h5>Media Queries</h5></section>
-<section><h5>Flex-box</h5></section>
-<section><h5>transform</h5></section>
+<section>
+<h5>Losange</h5>
+<a href="http://codepen.io/svassr/pen/wBmwWq?editors=110"><i>demo</i></a>
+
+<pre><code>.parallelogramme {
+  width: 8em; height: 8em; /* some arbitrary value */
+  transform: skewX(36deg);
+  background: lightblue; /*make it visible*/
+}
+</code></pre>
+<img src="./images/slides/skew.png" alt="skew">
+<img src="./images/slides/sass-mixin-star__rhombius.png" alt="star" height="170px" style="background:white" >
+</section>
+
+<section data-markdown>
+###### Arrondis : Border-radius
+http://codepen.io/svassr/pen/QwQeZg?editors=110
+
+Etc. : http://css-tricks.com/examples/ShapesOfCSS/
+</section>
+</section>
+<!-- CLOSE 3.3.2 Geometrie -->
+
+<section data-markdown>
+##### 3.3.3. Animation CSS
+</section>
+
+<section>
+<h5>3.3.3. Animation CSS</h5>
+
+<section data-markdown>
+Transition
+```css
+div {
+    transition-property: opacity;
+    transition-duration: 2s;
+    /* optional */
+    transition-timing-function: ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | steps(<integer>[, [ start | end ] ]?);
+    transition-delay: 0.5s; 
+}
+```
+
+```css
+transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+```
+
+```css
+transition: opacity 1s linear, transform ease-in-out 1.5;
+```
+[Demo](http://codepen.io/impressivewebs/pen/zohgt?editors=110)
+</section>
+
+<section data-markdown>
+Animation
+```css
+@keyframes hop{
+  from {top:36px;}
+  to {top:20px;}
+}
+
+animation:hop .75s infinite;
+```
+http://codepen.io/svassr/pen/YPaKrG?editors=110
+</section>
+</section>
+
+
+<section data-markdown>
+##### 3.3.4 [Media Queries](http://css-tricks.com/css-media-queries/)
+</section>
+
+<section>
+<div data-markdown>##### 3.3.4. [Media Queries](http://css-tricks.com/css-media-queries/)</div>
+
+<section>
+<pre><code class="hljs html" style="font-size:13px;"><link
+      rel='stylesheet' 
+      media='screen and (min-width: 701px) and (max-width: 900px)' 
+      href='css/medium.css' />
+</code></pre>
+<br>
+<pre><code class="hljs css">@media all and (max-width: 699px) and (min-width: 520px), (min-width: 1151px) {
+  body {
+    background: #ccc;
+  }
+}</code></pre>
+</section>
+
+<section data-markdown>
+```css
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+```
+</section>
+</section>
+
+
+<section data-markdown>
+##### 3.3.5. Flex-box
+http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+</section>
+
+
+<section>
+<h5>Transform</h5>
+
+<section>
+Jeu de propriétés permettant d'effectuer des transformations 2d et 3d.
+</section>
+
+<section data-markdown>
+![tridiv](./images/slides/tridiv.jpg)
+
+http://tridiv.com/
+</section>
+
+
+<section>
+<p class="fragment" data-fragment-index="1">Permet également de profiter de l'accéllération matériel pour le rendu</p>
+<div class="fragment" data-fragment-index="2">
+<br>
+<p>GPU vs CPU</p>
+<pre><code class="hljs css">  .cpu {
+    animation: anim-left ease-in-out 2s infinite;
+  }
+
+  .gpu {
+    animation: anim-transform ease-in-out 2s infinite;
+  }
+
+  @keyframes anim-left {
+    from {left:0px;}
+    to {left:600px;}
+  }
+
+  @keyframes anim-transform {
+    from {transform:translate3d(0,0,0); }
+    to {transform:translate3d(600px,0,0); }
+  }</code></pre>
+  <p><a href="http://codepen.io/svassr/pen/VYXjWy?editors=110">http://codepen.io/svassr/pen/VYXjWy?editors=110</a></p>
+  </div>
+</section>
+
+<section>
+<div>
+<p>GPU vs CPU</p>
+<pre><code class="hljs css">  .cpu {
+    animation: anim-left ease-in-out 2s infinite;
+  }
+
+  .gpu {
+    animation: anim-transform ease-in-out 2s infinite;
+  }
+
+  @keyframes anim-left {
+    from {left:0px;}
+    to {left:600px;}
+  }
+
+  @keyframes anim-transform {
+    from {transform:translate3d(0,0,0); }
+    to {transform:translate3d(600px,0,0); }
+  }</code></pre>
+</div>
+
+<div class="container">
+<div class="cube cpu">CPU</div>
+<div class="cube cube--deux gpu">GPU</div>
+</div>
+<style type="text/css">
+  .container{
+    position:relative;
+    width: 100%;
+    height: 300px;
+  }
+  .cube{
+    width:100px;
+    height:100px;
+    background: blue;
+    margin: 30px;
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 0px;
+    z-index: 50px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 100px !important;
+    letter-spacing: 1px;
+    font-family: arial;
+  }
+  .gpu{
+    background: blue;
+    top: 120px;
+  }
+
+  @-webkit-keyframes anim-left {
+    from {left:0px;}
+    to {left:600px;}
+  }
+  @keyframes anim-left {
+    from {left:0px;}
+    to {left:600px;}
+  }
+
+  @-webkit-keyframes anim-transform {
+    from {transform: translate3d(0,0,0); }
+    to {transform: translate3d(600px,0,0); }
+  }
+  @keyframes anim-transform {
+    from {transform:translate3d(0,0,0); }
+    to {transform:translate3d(600px,0,0); }
+  }
+
+  .cpu {
+    -webkit-animation: anim-left ease-in-out 2s infinite;
+    animation: anim-left ease-in-out 2s infinite;
+  }
+  .gpu {
+    -webkit-animation: anim-transform ease-in-out 2s infinite;
+    animation: anim-transform ease-in-out 2s infinite;
+  }
+</style>
+</section>
+
+</section>
 
 
 <!-- 2.4. Ressources -->
+<section>
+<h4>3.4. Ressources</h4>
 <section data-markdown>
-#### 2.4. Ressources
-
 * [Can I Use](http://caniuse.com/)
 * [SMACSS](http://smacss.com)
 * [CSS-Tricks](css-tricks.com)
@@ -551,30 +944,151 @@ Style-guide generator
     * [Comparison article](http://welchcanavan.com/styleguide-roundup/)
     * [style-guide generator list](http://vinspee.me/style-guide-guide/)
     * https://github.com/davidhund/styleguide-generators
+</section>
+<section data-markdown>
 * https://github.com/davidhund/styleguide-generators
 * pseudo selecteurs : http://quirksmode.org/css/selectors/
 * http://thewebrocks.com/demos/3D-css-tester/
 * Shapes : http://codepen.io/thebabydino/full/ca5fdb3582a6a27e4d3988d6d90952cb
 * Animation : http://css-tricks.com/css-animation-tricks/
+* Media Queries
+    * http://css-tricks.com/css-media-queries/
+    * http://css-tricks.com/approaches-media-queries-sass/
+</section>
 </section>
 
 <!-- END 2. CSS -->
-
-<!-- 3. Concevoir pour des appareils variés -->
-<section>
-<h2>3. Concevoir pour des appareils variés</h2>
-</section>
-
 
 <!-- 4. Javascript -->
 <section>
 <h2>4. Javascript</h2>
 </section>
 
+<section data-markdown>
+#### 2.i Code patterns
+</section>
+
+<section>
+<h4>2.ii Literal Object</h4>
+<section data-markdown>
+```js
+var myObject = {
+    sProp: 'some string value',
+    numProp: 2,
+    bProp: false
+};
+```
+</section>
+
+<section data-markdown>
+```js
+var Swapper = {
+    // an array literal
+    images: ["smile.gif", "grim.gif", "frown.gif", "bomb.gif"],
+    pos: { // nested object literal
+        x: 40,
+        y: 300
+    },
+    onSwap: function() { // function
+        // code here
+    }
+};
+```
+</section>
+<section data-markdown>
+- Configuration
+- Librarie (namespace)
+- Arguments (lorsque une fonction a plus de 3 arguments)
+- !! Facile de faire des erreurs
+- !! No scope
+</section>
+</section>
+
+
+<section data-markdown>#### 2.iii Prototype
+<section data-markdown>#### 2.iii Prototype</section>
+</section>
+
+<section data-markdown>#### 2.iv Functions</section>
+<section data-markdown>##### Callback</section>
+<section data-markdown>##### Memoization</section>
+
+</section>
+
+<section data-markdown>
+#### 2.v. Bonnes pratiques
+##### A. Modulariser
+http://addyosmani.com/writing-modular-js/
+
+###### Closure
+###### CommonJS
+###### AMD pattern
+http://requirejs.org/docs/whyamd.html
+
+###### Distribuer les modules 
+
+##### B. Compression du code
+##### C. Quelques notions d’optimisation
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
+
+##### Tests automatisés
+</section>
+<section data-markdown>
+#### 2.vi. Javascript Tools
+##### Debug
+##### Libraries / Frameworks
+- https://github.com/components Liste les incontournables du deévelopeur frontend moderne
+- Angular.js
+</section>
+
+
+<section data-markdown>
+#### 2.vii. Ressources
+
+##### Livres
+* [Javascript Patterns](http://shop.oreilly.com/product/9780596806767.do)
+* [Eloquent Javascript](http://search.oreilly.com/?q=eloquent+javascript)
+
+##### Sites web
+* [Can I Use](http://caniuse.com/)
+* http://www.html5rocks.com/en/
+* [developer.mozilla.org - Closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+* [developer.mozilla.org - Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
+
+##### Vidéos
+* [JS must watch](https://github.com/bolshchikov/js-must-watch)
+* [Dev on Stage - Youtube playlist](https://www.youtube.com/playlist?list=PL8l7YtFPKywaQ_VhZSeElM8D1JWpJKtKV)
+* [Lunch and learn - Youtube playlist](https://www.youtube.com/playlist?list=PL8l7YtFPKywYaDTg7yFDytHBX-BpH8cDM)
+</section>
+
+
 <!-- 5. Automatisation des opérations -->
+
 <section>
 <h2>5. Automatisation des opérations</h2>
+
+<section data-markdown>#### [Yeoman](http://yeoman.io/)</section>
+<section>
+<h4>Bower</h4>
+<a href="http://bower.io/">http://bower.io/</a>
+<br>
+<img src="./images/slides/bower-logo.png" alt="bower logo" width="30%">
 </section>
+
+<section>
+<h4>Grunt</h4>
+<a href="http://gruntjs.com/">http://gruntjs.com/</a>
+<br>
+<img src="./images/slides/grunt.png" alt="grunt logo" width="30%">
+</section>
+
+<section data-markdown>
+#### Gulp
+#### Exemples (grunt)
+</section>
+
+</section>
+
 </div>
 </div>
 

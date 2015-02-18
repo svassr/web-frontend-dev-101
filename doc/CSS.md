@@ -35,7 +35,7 @@ CSS :
 }
 ```
 
-####### CSS Orientté objet
+####### CSS Orienté objet
 
 *OOCSS (Object Oriented CSS)*
 http://oocss.org
@@ -123,10 +123,10 @@ Outil servant à vérifier que les bonnes pratiques sont bien suivies et que le 
 - Identifier des modules: blocs de contenu au style et aux fonctionnalités similiaires entre les pages ou dasn une même page
 - Intégrer un guide stylistique (Style Guide)
 - Séparer les variables dans un même plusieurs fichiers (ex: vars.scss, colors.scss, fonts.scss, breakpoints.scss)
-- Une feuille de style pa module
+- Une feuille de style par module
 - Une feuille de style par page
-- Les espacements verticaux (vertical rythme) devrais toujours être exprimés en <b>em</b> ou <b>rem</b> car relatifs à la taille du texte.</li>
-- Les espacements horizontaux devrais toujours être exprimés en % pour des containers et en <b>em</b> ou <b>rem</b> pour du texte.</li>
+- Les espacements verticaux (vertical rythme) devraient toujours être exprimés en <b>em</b> ou <b>rem</b> car relatifs à la taille du texte.</li>
+- Les espacements horizontaux devraient toujours être exprimés en % pour des "containers" et en <b>em</b> ou <b>rem</b> pour du texte.</li>
 
 ###### [KSS](http://warpspire.com/kss/styleguides/)
 Permet de générer un guide stylistique d'après la documentation du code
@@ -399,11 +399,11 @@ http://css-tricks.com/pseudo-class-selectors/
 
 http://codepen.io/svassr/pen/radBMP
 
-###### Hexadgone
+###### Hexagone
 
 http://codepen.io/svassr/pen/azqeYR?editors=110
 
-[Mask hexagonal](http://codepen.io/svassr/pen/NPyQVg?editors=110) 
+[Masque hexagonal](http://codepen.io/svassr/pen/NPyQVg?editors=110) 
 
 ###### Losange
 ```css
@@ -455,6 +455,31 @@ http://codepen.io/svassr/pen/YPaKrG?editors=110
 <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 900px)' href='css/medium.css' />
 ```
 
+```css
+@media all and (max-width: 699px) and (min-width: 520px), (min-width: 1151px) {
+  body {
+    background: #ccc;
+  }
+}
+```
+
+```css
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+```
+
 
 ##### Flex-box
 http://css-tricks.com/snippets/css/a-guide-to-flexbox/
@@ -482,3 +507,7 @@ Style-guide generator
 * http://thewebrocks.com/demos/3D-css-tester/
 * Shapes : http://codepen.io/thebabydino/full/ca5fdb3582a6a27e4d3988d6d90952cb
 * Animation : http://css-tricks.com/css-animation-tricks/
+* Media Queries
+	* http://css-tricks.com/css-media-queries/
+	* http://css-tricks.com/approaches-media-queries-sass/
+* http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/

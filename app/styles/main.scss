@@ -62,9 +62,10 @@ body {
 }
 
 .reveal pre { 
-  font-size: 0.47em;
+  font-size: 1.1rem;
 
   code {
+    font-size: 1.1rem;
     padding: 0.5em 0.8em !important;
   }
 }
@@ -74,4 +75,8 @@ body {
   border: none;
   box-shadow: none;
   margin: 15px 10px;
+}
+
+.reveal ul li {
+  margin-bottom: 1.1rem;
 }
