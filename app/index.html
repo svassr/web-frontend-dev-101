@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width">
     <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    
+
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../bower_components/reveal.js/css/theme/black.css">
     <link rel="stylesheet" type="text/css" href="../bower_components/reveal.js/lib/css/zenburn.css">
     <!-- endbuild -->
-    
+
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
@@ -89,7 +89,7 @@ Le positionnement des éléments devrait toujours suivre le flow de la page ou �
 Exprimer Espacements verticaux (vertical rythme) en <b>em</b> ou <b>rem</b>
 
 ```
-html { font-size: 62.5%; } 
+html { font-size: 62.5%; }
 body { font-size: 1.4rem; } /* =14px */
 h1   { font-size: 2.4rem; } /* =24px */
 ```
@@ -181,11 +181,11 @@ Utiliser des fonts d'icones
 </section>
 
 <section data-markdown>
-Les pixels ne sont plus un unités pertinante. 
+Les pixels ne sont plus un unités pertinante.
 
 Utilisez <u>rem</u> comme unité de mesure.
 ```
-html { font-size: 62.5%; } 
+html { font-size: 62.5%; }
 body { font-size: 1.4rem; } /* =14px */
 h1   { font-size: 2.4rem; } /* =24px */
 ```
@@ -196,7 +196,7 @@ h1   { font-size: 2.4rem; } /* =24px */
 
 
 <!-- 3. CSS data-background="#4d7e65"  -->
-<section> 
+<section>
 <h2>3. CSS</h2>
 </section>
 
@@ -239,7 +239,7 @@ h1   { font-size: 2.4rem; } /* =24px */
 </section>
 
 <section data-markdown ><script type="text/template" >
-###### OOCSS 
+###### OOCSS
 http://oocss.org
 
 - noms de classes courts
@@ -253,7 +253,7 @@ http://oocss.org
 <section>
 Exemple ("media" module)
 <br/>
-HTML: 
+HTML:
 <pre><code class="html"><div class="media attribution">
     <a href="http://twitter.com/stubbornella" class="img">
         <img src="http://stubbornella.com/profile_image.jpg" alt="me" />
@@ -263,7 +263,7 @@ HTML:
     </div>
 </div></code></pre>
 
-CSS: 
+CSS:
 <pre><code class="hlght css">   /* ====== media ====== */
 .media {margin:10px;}
 .media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
@@ -287,7 +287,7 @@ Inconvénients:
 ###### BEM (Block, Element, Modifier)
 http://bem.info/
 
-- Nomenclature orienté objet 
+- Nomenclature orienté objet
 - Tire profit des préprocesseurs CSS
 - Rend compte des héritages
 - Facilite la maintenance et l évolution
@@ -302,13 +302,13 @@ http://bem.info/
 <section>
 <h7>Exemple</h7><br/>
 
-<h8 class="left">CSS:</h8> 
+<h8 class="left">CSS:</h8>
 <pre><code class=" hljs css">.media {}
 .media__img {}
 .media__img--rev {}
 .media__body {}</code></pre>
 
-<h8 class="left">HTML:</h8> 
+<h8 class="left">HTML:</h8>
 <pre><code class="html" ><div class="media">
     <img src="logo.png" alt="Foo Corp logo" class="media__img--rev">
     <div class="media__body">
@@ -319,7 +319,7 @@ http://bem.info/
 </section>
 
 <section>
-<p><b>CSS Lint</b><br> 
+<p><b>CSS Lint</b><br>
 http://csslint.net</p>
 <p>Outil servant à vérifier que les bonnes pratiques sont bien suivies.</p>
 </section>
@@ -433,12 +433,12 @@ Référence au parent :  " & "
   font-weight: bold;
   text-decoration: none;
 
-  &:hover { 
-    text-decoration: underline; 
+  &:hover {
+    text-decoration: underline;
   }
 
-  body.firefox & { 
-    font-weight: normal; 
+  body.firefox & {
+    font-weight: normal;
   }
 }</code></pre></section>
 
@@ -606,7 +606,7 @@ Suffix "_" désigne les "partials".
 ```
 @import "foo.scss";
 @import "foo";
-``` 
+```
 Importe tous les deux un fichier scss. Note que l'extension est optionnelle.
 
 "_" est implicite. On ne peut donc pas créer un partial et un "non-partial" dans le même répertoire.
@@ -661,7 +661,7 @@ p:first-line {color: #CB000F;}
 ```
 </div>
 <div class="fragment" data-fragment-index="3" data-markdown>
-```:before```, ```:after```, 
+```:before```, ```:after```,
 
 ```
 @media print {
@@ -678,7 +678,7 @@ p:first-line {color: #CB000F;}
 </div>
 </section>
 <section data-markdown>
-- Demo 
+- Demo
   - http://codepen.io/siiron/pen/pjyku
   - http://codepen.io/Rplus/pen/orpLx
 - Ressources
@@ -705,7 +705,7 @@ http://codepen.io/svassr/pen/radBMP
 
 http://codepen.io/svassr/pen/azqeYR?editors=110
 
-[Masque hexagonal](http://codepen.io/svassr/pen/NPyQVg?editors=110) 
+[Masque hexagonal](http://codepen.io/svassr/pen/NPyQVg?editors=110)
 </section>
 
 <section>
@@ -746,7 +746,7 @@ div {
     transition-duration: 2s;
     /* optional */
     transition-timing-function: ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | steps(<integer>[, [ start | end ] ]?);
-    transition-delay: 0.5s; 
+    transition-delay: 0.5s;
 }
 ```
 
@@ -784,8 +784,8 @@ http://codepen.io/svassr/pen/YPaKrG?editors=110
 
 <section>
 <pre><code class="hljs html" style="font-size:13px;"><link
-      rel='stylesheet' 
-      media='screen and (min-width: 701px) and (max-width: 900px)' 
+      rel='stylesheet'
+      media='screen and (min-width: 701px) and (max-width: 900px)'
       href='css/medium.css' />
 </code></pre>
 <br>
@@ -1109,6 +1109,27 @@ hoistMe();
 ```
 </section>
 
+<section data-markdown>
+#####  Bind "```this```" context
+
+```js
+this.x = 9;
+var module = {
+  x: 81,
+  getX: function() { return this.x; }
+};
+
+module.getX(); // 81
+
+var getX = module.getX;
+getX(); // 9, because in this case, "this" refers to the global object
+
+// Create a new function with 'this' bound to module
+var boundGetX = getX.bind(module);
+boundGetX(); // 81
+```
+</section>
+
 <section>
 <h4>Closure</h4>
 </section>
@@ -1133,7 +1154,7 @@ function initUser(){
 }
 ```
 </div>
-</section>   
+</section>
 
 <section data-markdown>
 Créer un closure de confidentialité
@@ -1202,7 +1223,7 @@ writeCode(introduceBugs);
 </section>
 
 <section data-markdown>
-Util pour 
+Util pour
 
 - Taches asynchrone (Requête ajax)
 - Communiquer entre modules
@@ -1225,7 +1246,7 @@ var findNodes = function () {
   }
   return nodes;
 };
-```  
+```
 
 ```
 var hide = function (nodes) {
@@ -1377,7 +1398,7 @@ define(function (require) {
 var $ = require('jquery');
 
 function init(){ /*...*/ }
-  
+
 module.exports = { "init": init };
 ```
 
@@ -1395,7 +1416,7 @@ Eviter les manipulations de DOM
 
 écriture mais aussi lecture
 </section>
-  
+
 <section>
 <div>Changer la DOM en batch</div>
 
@@ -1418,7 +1439,7 @@ jQuery('#dialog-window').css({
      position: 'absolute',
      top: '200px',
      left: '200px'
-); 
+);
 ```
 
 ```js
@@ -1428,10 +1449,20 @@ jQuery('#dialog-window').addClass('mask-aligned-window');
 </div>
 </section>
 
+<section data-markdown>
+Templating
+
+- http://ejohn.org/blog/javascript-micro-templating/
+- http://www.html5rocks.com/en/tutorials/webcomponents/template/
+- http://plugins.jquery.com/loadTemplate/
+- Mustache
+- Handlebars
+</section>
+
 <section  data-markdown>
 - Garder la DOM simple
 - Construire la DOM séparément puis l'insérer dans la page
-- Garder des références aux éléments de DOM courament manipulés 
+- Garder des références aux éléments de DOM courament manipulés
 - Supprimer les écouteurs d'events inutilisés
 - Attention aux events répétitif (scroll etc.) _.debounce
 - Use ```push()```, ```pop()```, ```shift()```, ```join()``` même sur les ``string```
@@ -1442,7 +1473,7 @@ Autres
 
 - https://developers.google.com/speed/articles/optimizing-javascript
 - http://desalasworks.com/article/javascript-performance-techniques/
-
+- http://api.jquery.com/promise/
 </section>
 
 
@@ -1452,7 +1483,6 @@ Ressources
 - https://developers.google.com/speed/articles/optimizing-javascript
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 </section>
-
 </section>
 
 
