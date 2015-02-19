@@ -13,7 +13,7 @@
     <!-- endbower -->
     <link rel="stylesheet" type="text/css" href="../bower_components/reveal.js/css/reveal.css">
     <link rel="stylesheet" type="text/css" href="../bower_components/reveal.js/css/theme/black.css">
-    <link rel="stylesheet" href="../bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/reveal.js/lib/css/zenburn.css">
     <!-- endbuild -->
     
     <!-- build:css(.tmp) styles/main.css -->
@@ -85,7 +85,14 @@ http://www.liquidapsive.com/
 ![Conserver le flow](http://e.fastcompany.net/multisite_files/fastcompany/imagecache/inline-large/inline/2014/11/3038367-inline-i-4-9-gifs-that-explain-responsive-design-brilliantly-04flow-vs-static-2-copy.gif)
 
 Le positionnement des éléments devrait toujours suivre le flow de la page ou être relatif à leur parents si nécessaire. Éviter les positionnements statiques.
-http://www.liquidapsive.com/
+
+Exprimer Espacements verticaux (vertical rythme) en <b>em</b> ou <b>rem</b>
+
+```
+html { font-size: 62.5%; } 
+body { font-size: 1.4rem; } /* =14px */
+h1   { font-size: 2.4rem; } /* =24px */
+```
 </section>
 
 <section data-markdown >
@@ -95,7 +102,7 @@ http://www.liquidapsive.com/
 - Nombre de breakpoint limités (limite min) souvent mobile/tablette/desktop
 - Design optimum lorsque son cadre est proche des limites de l'écran
 - Les appareils dictes les breakpoints
-- Design optimum seulement sur queslques appareils
+- Design optimum seulement sur quelques appareils
 http://www.liquidapsive.com/
 </section>
 
@@ -171,6 +178,17 @@ Utiliser des fonts d'icones
 
 @include background-dpi('mybutton', $ext: 'png')
 </code></pre>
+</section>
+
+<section data-markdown>
+Les pixels ne sont plus un unités pertinante. 
+
+Utilisez <u>rem</u> comme unité de mesure.
+```
+html { font-size: 62.5%; } 
+body { font-size: 1.4rem; } /* =14px */
+h1   { font-size: 2.4rem; } /* =24px */
+```
 </section>
 </section>
 
@@ -366,7 +384,6 @@ a.button.star.disabled{
     <li class="fragment" data-fragment-index="4">Séparer les variables dans un ou plusieurs fichiers (ex: vars.scss, colors.scss, fonts.scss, breakpoints.scss)</li>
     <li class="fragment" data-fragment-index="5">Une feuille de style par module</li>
     <li class="fragment" data-fragment-index="6">Une feuille de style par page</li>
-    <li class="fragment" data-fragment-index="7">Espacements verticaux (vertical rythme) toujours exprimés en <b>em</b> ou <b>rem</b></li>
 </ul>
 </section>
 <!-- CLOSE Architecture -->
@@ -1005,40 +1022,457 @@ var Swapper = {
 </section>
 
 
-<section data-markdown>#### 2.iii Prototype
 <section data-markdown>#### 2.iii Prototype</section>
+
+<section data-markdown>
+##### Custom Constructor
+```js
+  // constructor
+function Waffle() {
+  this.tastes = "yummy";
+}
+// a new object
+var good_morning = new Waffle();
+console.log(typeof good_morning); // "object"
+console.log(good_morning.tastes); // "yummy"
+// antipattern:
+// forgotten `new`
+var good_morning = Waffle();
+console.log(typeof good_morning); // "undefined"
+console.log(window.tastes); // "yummy"
+```
+</section>
+<section data-markdown>
+##### Custom Constructor Secured
+```js
+function Waffle() {
+  if (!(this instanceof Waffle)) {
+    return new Waffle();
+  }
+  this.tastes = "yummy";
+}
+Waffle.prototype.wantAnother = true;
+// testing invocations
+var first = new Waffle(),
+second = Waffle();
+console.log(first.tastes); // "yummy"
+console.log(second.tastes); // "yummy"
+console.log(first.wantAnother); // true
+console.log(second.wantAnother); // true
+```
 </section>
 
 <section data-markdown>#### 2.iv Functions</section>
-<section data-markdown>##### Callback</section>
-<section data-markdown>##### Memoization</section>
 
+<section><h4>2.iv Functions</h4>
+<section data-markdown>
+```js
+function foo() {} // declaration
+var bar = function () {}; // expression
+var baz = function baz() {}; // named expression
+
+foo.name; // "foo"
+bar.name; // ""
+baz.name; // "baz"
+```
+</section>
+
+<section data-markdown>
+```js
+// !! antipattern for illustration only global functions
+function foo() {
+  alert('global foo');
+}
+function bar() {
+  alert('global bar');
+}
+function hoistMe() {
+  console.log(typeof foo); // "function"
+  console.log(typeof bar); // "undefined"
+  foo(); // "local foo"
+  bar(); // TypeError: bar is not a function
+
+  // function declaration:
+  // variable 'foo' and its implementation both get hoisted
+
+  function foo() {
+  alert('local foo');
+  }
+  // function expression:
+  // only variable 'bar' gets hoisted
+  // not the implementation
+  var bar = function () {
+    alert('local bar');
+  };
+}
+hoistMe();
+```
+</section>
+
+<section>
+<h4>Closure</h4>
+</section>
+
+<section>
+<h4>Closure</h4>
+<div class="fragment" data-fragment-index="1" data-markdown>
+Variable globale
+
+```js
+var user = {
+  // ...
+}
+```
+</div>
+<div class="fragment" data-fragment-index="2" data-markdown>
+Retourne la variable donc la valeur peut être connue
+```js
+function initUser(){
+  var user = new User();
+  return user;
+}
+```
+</div>
+</section>   
+
+<section data-markdown>
+Créer un closure de confidentialité
+```js
+var setup = function () {
+  alert(1);
+  var user = new User();
+
+  return function () {
+    alert(2);
+    // do stuff for this user
+  };
+};
+
+// using the setup function
+var my = setup(); // alerts 1
+my(); // alerts 2
+```
+</section>
+
+<section>
+<h4>Fonction immédiate </h4>
+<div class="fragment" data-fragment-index="1"  data-markdown>
+```js
+var result = (function () {
+  return 2 + 2;
+}());
+```
+</div>
+<div class="fragment" data-fragment-index="2"  data-markdown>
+```js
+var user = (function (dep1, dep2) {
+  var user = new User();
+  // ...
+  return this;  // could be { ... }
+}(dep1, dep2));
+```
+On vient de créer un module.
+
+```js
+// main.js
+(function ($) {
+  $( document ).ready(function(){
+     // ...
+  });
+}(jQuery));
+```
+</div>
+</section>
+
+<section data-markdown>##### Callback / return function</section>
+
+<section data-markdown>
+```
+function writeCode(callback) {
+  // do something...
+  callback();
+  // ...
+}
+
+function introduceBugs() {
+  // ... make bugs
+}
+writeCode(introduceBugs);
+```
+</section>
+
+<section data-markdown>
+Util pour 
+
+- Taches asynchrone (Requête ajax)
+- Communiquer entre modules
+- Garder un objectif unique à chaque fonction
+</section>
+
+<section data-markdown>
+Garder un objectif unique à chaque fonction
+
+Exemple:
+```js
+var findNodes = function () {
+  var i = 100000, // big, heavy loop
+  nodes = [], // stores the result
+  found; // the next node found
+  while (i) {
+    i -= 1;
+    // complex logic here...
+    nodes.push(found);
+  }
+  return nodes;
+};
+```  
+
+```
+var hide = function (nodes) {
+  var i = 0, max = nodes.length;
+  for (; i < max; i += 1) {
+    nodes[i].style.display = "none";
+  }
+};
+// executing the functions
+hide(findNodes());
+```
+</section>
+
+<section data-markdown>
+  Meilleur solution
+```js
+// refactored findNodes() to accept a callback
+var findNodes = function (callback) {
+  var i = 100000,
+  nodes = [],
+  found;
+  // check if callback is callable
+  if (typeof callback !== "function") {
+    callback = false;
+  }
+  while (i) {
+    i -= 1;
+    // complex logic here...
+    // now callback:
+    if (callback) {
+      callback(found);
+    }
+    nodes.push(found);
+  }
+  return nodes;
+};
+
+// a callback function
+var hide = function (node) {
+  node.style.display = "none";
+};
+
+// find the nodes and hide them as you go
+findNodes(hide);
+```
+</section>
+
+<section data-markdown>
+##### Returned function
+```js
+function writeCode(callback) {
+  // do something...
+  callback();
+  return function(){
+    // writeCode say do this in return
+  }
+  // ...
+}
+
+function introduceBugs() {
+  // ... make bugs
+}
+
+writeCode(introduceBugs)();
+```
+</section>
+</section>
+
+
+<section data-markdown>##### Memoization</section>
+<section data-markdown>
+```js
+var myFunc = function (param) {
+  if (!myFunc.cache[param]) {
+    var result = {};
+    // ... expensive operation ...
+    myFunc.cache[param] = result;
+  }
+  return myFunc.cache[param];
+};
+// cache storage
+myFunc.cache = {};
+```
+https://lodash.com/docs#memoize
 </section>
 
 <section data-markdown>
 #### 2.v. Bonnes pratiques
+</section>
+
+<section data-markdown>
 ##### A. Modulariser
 http://addyosmani.com/writing-modular-js/
 
-###### Closure
-###### CommonJS
+```js
+(function () {
+    var $ = this.jQuery;
+
+    this.myExample = function () {};
+}());
+```
+</section>
+
+<section data-markdown>
 ###### AMD pattern
 http://requirejs.org/docs/whyamd.html
 
-###### Distribuer les modules 
+- (+) Loading asynchrone des modules
+- (-) Syntaxe complèxe
 
-##### B. Compression du code
-##### C. Quelques notions d’optimisation
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
-
-##### Tests automatisés
+```js
+define(['jquery'] , function ($) {
+    return function () {};
+});
+```
 </section>
+
+<section>
+Syntaxe complèxe
+<div class="fragment" data-fragment-index="1" data-markdown>
+```js
+define('myModule', [ "require", "jquery", "blade/object", "blade/fn", "rdapi",
+         "oauth", "blade/jig", "blade/url", "dispatch", "accounts",
+         "storage", "services", "widgets/AccountPanel", "widgets/TabButton",
+         "widgets/AddAccount", "less", "osTheme", "jquery-ui-1.8.7.min",
+         "jquery.textOverflow"],
+function (require,   $,        object,         fn,         rdapi,
+          oauth,   jig,         url,         dispatch,   accounts,
+          storage,   services,   AccountPanel,           TabButton,
+          AddAccount,           less,   osTheme) {
+
+});
+```
+</div>
+<div class="fragment" data-fragment-index="2" data-markdown>
+```js
+define(function (require) {
+    var dependency1 = require('dependency1'),
+        dependency2 = require('dependency2');
+
+    return function () {};
+});
+```
+</div>
+</section>
+
+<section data-markdown>###### CommonJS
+```js
+var $ = require('jquery');
+
+function init(){ /*...*/ }
+  
+module.exports = { "init": init };
+```
+
+- (+) Syntaxe simple (NodeJs Style)
+- (+) Executable server side
+- (-) Doit être traduit pour le navigateur avec Browserfy
+
+![Bowserify](./images/slides/browserify_logo.png) (grunt task)
+</section>
+
+<section data-markdown>##### C. Quelques notions d’optimisation</section>
+<section data-markdown>
+Eviter les manipulations de DOM
+
+
+écriture mais aussi lecture
+</section>
+  
+<section>
+<div>Changer la DOM en batch</div>
+
+<div class="fragment" data-fragment-index="1"  data-markdown>
+mauvais
+
+```js
+// This will incurr 5 screen refreshes
+jQuery('#dialog-window').width(600).height(400).css('position': 'absolute')
+                       .css('top', '200px').css('left', '200px');
+```
+</div>
+<div class="fragment" data-fragment-index="2"  data-markdown>
+BON
+```js
+// Let jQuery handle the batching
+jQuery('#dialog-window').css({
+     width: '600px',
+     height: '400px',
+     position: 'absolute',
+     top: '200px',
+     left: '200px'
+); 
+```
+
+```js
+// Or even better use a CSS class.
+jQuery('#dialog-window').addClass('mask-aligned-window');
+```
+</div>
+</section>
+
+<section  data-markdown>
+- Garder la DOM simple
+- Construire la DOM séparément puis l'insérer dans la page
+- Garder des références aux éléments de DOM courament manipulés 
+- Supprimer les écouteurs d'events inutilisés
+- Attention aux events répétitif (scroll etc.) _.debounce
+- Use ```push()```, ```pop()```, ```shift()```, ```join()``` même sur les ``string```
+</section>
+
+<section  data-markdown>
+Autres
+
+- https://developers.google.com/speed/articles/optimizing-javascript
+- http://desalasworks.com/article/javascript-performance-techniques/
+
+</section>
+
+
+<section  data-markdown>
+Ressources
+
+- https://developers.google.com/speed/articles/optimizing-javascript
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
+</section>
+
+</section>
+
+
+<section data-markdown>##### Tests automatisés
+
+- Mocha + Chai
+- Qunit
+
+</section>
+
 <section data-markdown>
 #### 2.vi. Javascript Tools
 ##### Debug
 ##### Libraries / Frameworks
-- https://github.com/components Liste les incontournables du deévelopeur frontend moderne
+- https://github.com/components : Les Incontournables !!
 - Angular.js
+- lodash
+- Underscore
+- Backbone
+- ReactJs
 </section>
 
 
@@ -1052,9 +1486,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 ##### Sites web
 * [Can I Use](http://caniuse.com/)
 * http://www.html5rocks.com/en/
+* http://addyosmani.com/writing-modular-js/
 * [developer.mozilla.org - Closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 * [developer.mozilla.org - Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
+* https://developers.google.com/speed/articles/optimizing-javascript
+* http://desalasworks.com/article/javascript-performance-techniques/
+</section>
 
+<section data-markdown>
+#### 2.vii. Ressources
 ##### Vidéos
 * [JS must watch](https://github.com/bolshchikov/js-must-watch)
 * [Dev on Stage - Youtube playlist](https://www.youtube.com/playlist?list=PL8l7YtFPKywaQ_VhZSeElM8D1JWpJKtKV)
@@ -1066,8 +1506,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 
 <section>
 <h2>5. Automatisation des opérations</h2>
+<img src="./images/slides/yeoman_grunt_bower.png" alt="Yeoman etc" style="background:#AAA;">
+</section>
 
-<section data-markdown>#### [Yeoman](http://yeoman.io/)</section>
+<section>
+<h2>5. Automatisation des opérations</h2>
+<section>
+<a href="http://yeoman.io/"><h4>Yeoman</h4></a>
+<img src="./images/slides/yeoman-logo.png" alt"Yeoman" style="background:#AAA;" /><br>
+<a href="http://yeoman.io/">http://yeoman.io/</a>
+
+</section>
+
 <section>
 <h4>Bower</h4>
 <a href="http://bower.io/">http://bower.io/</a>
@@ -1094,7 +1544,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/reveal.js/js/reveal.js"></script>
     <script src="bower_components/classlist/classList.js"></script>
@@ -1102,25 +1551,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
     <!-- endbower -->
     <script src="../bower_components/reveal.js/plugin/markdown/marked.js"></script>
     <script src="../bower_components/reveal.js/plugin/markdown/markdown.js"></script>
-    <script src="../bower_components/reveal.js/plugin/highlight/highlight.js"></script>
     <script src="../bower_components/reveal.js/plugin/zoom-js/zoom.js"></script>
     <script src="../bower_components/reveal.js/plugin/search/search.js"></script>
-
+    <script src="../bower_components/reveal.js/plugin/highlight/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <!-- endbuild -->
 
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/main.js" defer="defer"></script>
+    <!-- endbuild -->
 </body>
 </html>

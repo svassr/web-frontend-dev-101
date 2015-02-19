@@ -36,6 +36,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
 ##### Livres
 * [Javascript Patterns](http://shop.oreilly.com/product/9780596806767.do)
 * [Eloquent Javascript](http://search.oreilly.com/?q=eloquent+javascript)
+* [essential js design patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/)
 
 ##### Sites web
 * [Can I Use](http://caniuse.com/)

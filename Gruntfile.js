@@ -36,7 +36,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['jshint'],
+        tasks: ['jshint', 'build'],
         options: {
           livereload: true
         }
@@ -196,6 +196,9 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//,
+        exclude:[
+          'bower_components/modernizr/modernizr.js'
+        ],
         src: ['<%= config.app %>/index.html']
       },
       sass: {
@@ -430,6 +433,7 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
+
 
   grunt.registerTask('default', [
     'newer:jshint',
