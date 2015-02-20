@@ -88,7 +88,7 @@ Le positionnement des éléments devrait toujours suivre le flow de la page ou �
 
 Exprimer Espacements verticaux (vertical rythme) en <b>em</b> ou <b>rem</b>
 
-```
+```css
 html { font-size: 62.5%; }
 body { font-size: 1.4rem; } /* =14px */
 h1   { font-size: 2.4rem; } /* =24px */
@@ -1234,7 +1234,7 @@ Util pour
 Garder un objectif unique à chaque fonction
 
 Exemple:
-```js
+<pre><code class="hljs js">
 var findNodes = function () {
   var i = 100000, // big, heavy loop
   nodes = [], // stores the result
@@ -1246,18 +1246,17 @@ var findNodes = function () {
   }
   return nodes;
 };
-```
+</code></pre>
 
-```
+<pre><code class="hljs js">
 var hide = function (nodes) {
-  var i = 0, max = nodes.length;
-  for (; i < max; i += 1) {
+  nodes.forEach(function(){
     nodes[i].style.display = "none";
-  }
+  });
 };
 // executing the functions
 hide(findNodes());
-```
+</code></pre>
 </section>
 
 <section data-markdown>
@@ -1536,21 +1535,21 @@ Ressources
 
 <section>
 <h2>5. Automatisation des opérations</h2>
-<img src="./images/slides/yeoman_grunt_bower.png" alt="Yeoman etc" style="background:#AAA;">
+<img src="./images/slides/yeoman_grunt_bower.png" alt="Yeoman etc" style="background-color: #aaa;" >
 </section>
 
 <section>
 <h2>5. Automatisation des opérations</h2>
-<section>
-<a href="http://yeoman.io/"><h4>Yeoman</h4></a>
-<img src="./images/slides/yeoman-logo.png" alt"Yeoman" style="background:#AAA;" /><br>
-<a href="http://yeoman.io/">http://yeoman.io/</a>
 
+<section>
+<h4>Yeoman</h4>
+<img src="./images/slides/yeomanLogo.png" alt="Yeoman etc" style="background-color: #aaa;" >
+<a href="http://yeoman.io/">yeoman.io</a>
 </section>
 
 <section>
 <h4>Bower</h4>
-<a href="http://bower.io/">http://bower.io/</a>
+<a href="http://bower.io/">bower.io</a>
 <br>
 <img src="./images/slides/bower-logo.png" alt="bower logo" width="30%">
 </section>

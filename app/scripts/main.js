@@ -24,4 +24,3 @@ Reveal.initialize({
 		// { src: 'plugin/notes/notes.js', async: true }
 	// ]
 });
-
