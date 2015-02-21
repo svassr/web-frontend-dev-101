@@ -8,6 +8,17 @@ npm: **N**ode **P**ackage **M**anager
 
 https://gist.github.com/isaacs/579814
 
+```
+npm init
+npm search
+npm list (-g)
+npm install (-g) (--save) (--save-dev)
+npm uninstall (-g) (--save) (--save-dev)
+npm prune (--production)
+```
+
+```npm install momentjs --save```
+
 #### Bower
 [[../app/images/slides/bower-logo.png | height = 100px ]]
 
