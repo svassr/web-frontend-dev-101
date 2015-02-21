@@ -14,9 +14,8 @@ Développeur Frontend chez **[LVL Studio](http://lvlstudio.com)**
 <li><a rel="me" class="twitter" href="https://twitter.com/mrvasseur" target="blank">twitter: @mrvasseur</a></li>
 <li><a rel="me" class="codepen" href="http://codepen.io/svassr" target="blank">codepen.io/svassr</a></li>
 <li><a rel="me" class="github" href="https://github.com/svassr?tab=activity" target="blank">github.com/svassr</a></li>
-<li><a rel="me" class="linkedin" href="http://www.linkedin.com/in/mrvasseur" linkindex="42" set="yes" target="blank">linkedin.com/in/mrvasseur</a></li>
 <li><a rel="me" class="stackoverflow" href="http://stackoverflow.com/users/1157322/svassr" target="blank">Stackoverflow:svassr</a></li>
-
+<li><a rel="me" class="linkedin" href="http://www.linkedin.com/in/mrvasseur" linkindex="42" set="yes" target="blank">linkedin.com/in/mrvasseur</a></li>
 </ul>
 
 ## Sommaire
