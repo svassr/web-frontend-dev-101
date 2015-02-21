@@ -205,6 +205,15 @@ h1   { font-size: 2.4rem; } /* =24px */
 <h3>3.1. Bonnes pratiques</h3>
 </section>
 
+<section data-markdown>
+## La solution ultime au problème de ```padding```
+```
+* {
+  box-sizing: border-box;  // ultimate solution to box-sizing. Padding is included into boxes dimensions not added to it. 
+}
+```
+</section>
+
 <section>
 <h3 class="fragment" data-fragment-id="0" >3.1.1. Nomenclature</h3>
 <p class="fragment" data-fragment-id="1">1. Utiliser des classes préférablement.<br>Les id(#) sont uniques, ils servent d'ancre dans la page ou au javascript.</p>

@@ -2,6 +2,13 @@
 
 #### 2.1. Bonnes pratiques
 
+##### 2.1.0. La solution ultime au problème de ```padding```
+```
+* {
+  box-sizing: border-box;  // ultimate solution to box-sizing. Padding is included into boxes dimensions not added to it. 
+}
+```
+
 ##### 2.1.1. Nomenclature
 
 1. Utiliser des classes uniquement pas des ID pour associer un style.
