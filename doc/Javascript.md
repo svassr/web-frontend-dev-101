@@ -6,6 +6,17 @@
 ##### Callback
 ##### Memoization
 
+##### Promise
+
+Promises have been around for a while in the form of libraries, such as:
+
+- Q
+- when
+- WinJS
+- RSVP.js
+
+The above and JavaScript promises share a common, standardised behaviour called Promises/A+. If you're a jQuery user, they have something similar called Deferreds. However, Deferreds aren't Promise/A+ compliant, which makes them subtly different and less useful, so beware. jQuery also has a Promise type, but this is just a subset of Deferred and has the same issues.
+
 #### 2.v. Bonnes pratiques
 ##### Modulariser
 http://addyosmani.com/writing-modular-js/
@@ -13,9 +24,7 @@ http://addyosmani.com/writing-modular-js/
 ###### Closure
 ###### CommonJS
 ###### AMD pattern
-http://requirejs.org/docs/whyamd.html
-
-###### Distribuer les modules 
+http://requirejs.org/docs/whyamd.html 
 
 ##### Compression du code
 ##### Quelques notions d’optimisation
@@ -93,6 +102,7 @@ mais aussi
 * [Can I Use](http://caniuse.com/)
 * http://www.html5rocks.com/en/
 * [developer.mozilla.org - Closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+* Promises: http://www.html5rocks.com/en/tutorials/es6/promises/
 * [developer.mozilla.org - Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
 * http://ejohn.org/blog/javascript-micro-templating/
 * http://www.html5rocks.com/en/tutorials/webcomponents/template/
