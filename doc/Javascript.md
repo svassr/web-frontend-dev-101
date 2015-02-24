@@ -8,14 +8,17 @@
 
 ##### Promise
 
-Promises have been around for a while in the form of libraries, such as:
 
-- Q
-- when
-- WinJS
-- RSVP.js
+>Promises have been around for a while in the form of libraries, such as:
+>
+>- [Q](https://github.com/kriskowal/q)
+>- [when](https://github.com/cujojs/when)
+>- [WinJS](http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx)
+>- [RSVP.js](https://github.com/tildeio/rsvp.js)
+>
+>The above and JavaScript promises share a common, standardised behaviour called [Promises/A+](https://github.com/promises-aplus/promises-spec). If you're a jQuery user, they have something similar called [Deferreds](http://api.jquery.com/category/deferred-object/). However, Deferreds aren't Promise/A+ compliant, which makes them [subtly different and less useful](https://thewayofcode.wordpress.com/tag/jquery-deferred-broken/), so beware. jQuery also has [a Promise type](http://api.jquery.com/Types/#Promise), but this is just a subset of Deferred and has the same issues.
 
-The above and JavaScript promises share a common, standardised behaviour called Promises/A+. If you're a jQuery user, they have something similar called Deferreds. However, Deferreds aren't Promise/A+ compliant, which makes them subtly different and less useful, so beware. jQuery also has a Promise type, but this is just a subset of Deferred and has the same issues.
+source: http://www.html5rocks.com/en/tutorials/es6/promises/
 
 #### 2.v. Bonnes pratiques
 ##### Modulariser
